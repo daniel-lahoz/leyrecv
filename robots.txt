@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://daniel-lahoz.github.io/leyrecv/sitemap.xml
+

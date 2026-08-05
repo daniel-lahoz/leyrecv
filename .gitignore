@@ -1,0 +1,66 @@
+# Local workspace -------------------------------------------------------------
+# Branch-independent project notes, source material and maintenance tools.
+# Keep every local-only file under this directory so branch changes do not
+# overwrite or remove it.
+/.local/
+/content/
+/scripts/
+
+# Documentation and source material must remain local.
+*.md
+*.mdx
+*.doc
+*.docx
+*.pages
+
+# Agent, assistant and conversation state.
+/.agents/
+/.agent/
+/agents/
+/.codex/
+/.claude/
+/.cursor/
+/.windsurf/
+/.history/
+/history/
+/historial/
+/.chat-history/
+/.sessions/
+/sessions/
+*.jsonl
+
+# Editor and operating-system metadata.
+/.idea/
+/.vscode/
+.DS_Store
+._*
+Thumbs.db
+
+# Logs, caches and local environment files.
+*.log
+*.local
+*.local.*
+*.tmp
+*.swp
+*.swo
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+node_modules/
+dist/
+.cache/
+
+# Local source/reference media. Optimised web assets belong in /assets/.
+/*.jpg
+/*.jpeg
+/*.png
+/*.webp
+/*.tif
+/*.tiff
+/*.pdf
+*.psd
+*.ai
+*.sketch
+*.fig
