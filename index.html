@@ -22,10 +22,10 @@
     <link rel="preload" href="assets/fonts/manrope-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/fonts/newsreader-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/images/leyre-portrait-960.webp" as="image" type="image/webp" imagesrcset="assets/images/leyre-portrait-640.webp 640w, assets/images/leyre-portrait-960.webp 960w, assets/images/leyre-portrait-1200.webp 1003w" imagesizes="(max-width: 840px) 82vw, 40vw" fetchpriority="high" />
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260806-11" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260806-12" />
     <script>document.documentElement.classList.add("js");</script>
     <script src="assets/vendor/three.min.js" defer></script>
-    <script src="assets/js/main.js?v=20260806-10" defer></script>
+    <script src="assets/js/main.js?v=20260806-11" defer></script>
     <title>Leyre Alcalde — Asistente virtual · Control in Motion</title>
   </head>
   <body data-language="es">
@@ -174,27 +174,52 @@
 
           <div class="service-console reveal" data-service-console>
             <div class="service-nav" role="tablist" aria-label="Servicios disponibles">
-              <button class="service-tab is-active" id="service-tab-1" type="button" role="tab" aria-selected="true" aria-controls="service-panel" data-service="0"><span>01</span> Procesos de negocio</button>
-              <button class="service-tab" id="service-tab-2" type="button" role="tab" aria-selected="false" aria-controls="service-panel" data-service="1"><span>02</span> Soporte financiero</button>
-              <button class="service-tab" id="service-tab-3" type="button" role="tab" aria-selected="false" aria-controls="service-panel" data-service="2"><span>03</span> Gestión administrativa</button>
-              <button class="service-tab" id="service-tab-4" type="button" role="tab" aria-selected="false" aria-controls="service-panel" data-service="3"><span>04</span> Atención al cliente</button>
-              <button class="service-tab" id="service-tab-5" type="button" role="tab" aria-selected="false" aria-controls="service-panel" data-service="4"><span>05</span> Gestión de personas</button>
-              <button class="service-tab" id="service-tab-6" type="button" role="tab" aria-selected="false" aria-controls="service-panel" data-service="5"><span>06</span> Herramientas de productividad</button>
-              <button class="service-tab" id="service-tab-7" type="button" role="tab" aria-selected="false" aria-controls="service-panel" data-service="6"><span>07</span> Comunicación y marketing digital</button>
-              <button class="service-tab" id="service-tab-8" type="button" role="tab" aria-selected="false" aria-controls="service-panel" data-service="7"><span>08</span> Eventos y reuniones</button>
+              <button class="service-tab is-active" id="service-tab-1" type="button" role="tab" aria-selected="true" aria-controls="service-panel-1" data-service="0"><span>01</span> Procesos de negocio</button>
+              <button class="service-tab" id="service-tab-2" type="button" role="tab" aria-selected="false" aria-controls="service-panel-2" data-service="1"><span>02</span> Soporte financiero</button>
+              <button class="service-tab" id="service-tab-3" type="button" role="tab" aria-selected="false" aria-controls="service-panel-3" data-service="2"><span>03</span> Gestión administrativa</button>
+              <button class="service-tab" id="service-tab-4" type="button" role="tab" aria-selected="false" aria-controls="service-panel-4" data-service="3"><span>04</span> Atención al cliente</button>
+              <button class="service-tab" id="service-tab-5" type="button" role="tab" aria-selected="false" aria-controls="service-panel-5" data-service="4"><span>05</span> Gestión de personas</button>
+              <button class="service-tab" id="service-tab-6" type="button" role="tab" aria-selected="false" aria-controls="service-panel-6" data-service="5"><span>06</span> Herramientas de productividad</button>
+              <button class="service-tab" id="service-tab-7" type="button" role="tab" aria-selected="false" aria-controls="service-panel-7" data-service="6"><span>07</span> Comunicación y marketing digital</button>
+              <button class="service-tab" id="service-tab-8" type="button" role="tab" aria-selected="false" aria-controls="service-panel-8" data-service="7"><span>08</span> Eventos y reuniones</button>
             </div>
 
-            <article class="service-panel" id="service-panel" role="tabpanel" aria-labelledby="service-tab-1" tabindex="0" data-service-panel>
-              <div class="service-visual" aria-hidden="true">
-                <div class="mini-core"><span></span><i></i><b></b></div>
-                <span class="mini-coordinate">SERVICIO / <i data-service-number>01</i></span>
-              </div>
+            <article class="service-panel is-active" id="service-panel-1" role="tabpanel" aria-labelledby="service-tab-1" tabindex="0" data-service-panel="0">
+              <div class="service-visual" aria-hidden="true"></div>
               <div class="service-panel-copy">
-                <p data-service-label>SISTEMA BASE</p>
-                <h3 data-service-title>Procesos de negocio</h3>
-                <p data-service-description>Ejecución, evaluación y seguimiento de la eficacia del control interno y la gestión de riesgos de los procesos de negocio.</p>
-                <ul data-service-list><li>Control interno</li><li>Gestión de riesgos</li><li>Seguimiento</li></ul>
+                <p>SISTEMA BASE</p>
+                <h3>Procesos de negocio</h3>
+                <p>Ejecución, evaluación y seguimiento de la eficacia del control interno y la gestión de riesgos de los procesos de negocio.</p>
+                <ul><li>Control interno</li><li>Gestión de riesgos</li><li>Seguimiento</li></ul>
               </div>
+            </article>
+            <article class="service-panel" id="service-panel-2" role="tabpanel" aria-labelledby="service-tab-2" tabindex="0" data-service-panel="1" hidden>
+              <div class="service-visual" aria-hidden="true"></div>
+              <div class="service-panel-copy"><p>VISIBILIDAD</p><h3>Soporte financiero</h3><p>Contabilidad, facturación, seguimiento de cobros y pagos, control de gastos, análisis y elaboración de informes financieros y presupuestos.</p><ul><li>Contabilidad y facturación</li><li>Cobros y pagos</li><li>Informes y presupuestos</li></ul></div>
+            </article>
+            <article class="service-panel" id="service-panel-3" role="tabpanel" aria-labelledby="service-tab-3" tabindex="0" data-service-panel="2" hidden>
+              <div class="service-visual" aria-hidden="true"></div>
+              <div class="service-panel-copy"><p>COORDINACIÓN</p><h3>Gestión administrativa</h3><p>Elaboración, actualización y seguimiento de procedimientos internos e informes, gestión documental, agenda, correo electrónico y viajes.</p><ul><li>Procedimientos e informes</li><li>Agenda y correo</li><li>Documentación y viajes</li></ul></div>
+            </article>
+            <article class="service-panel" id="service-panel-4" role="tabpanel" aria-labelledby="service-tab-4" tabindex="0" data-service-panel="3" hidden>
+              <div class="service-visual" aria-hidden="true"></div>
+              <div class="service-panel-copy"><p>CONEXIÓN</p><h3>Atención al cliente</h3><p>Gestión de consultas por email y redes sociales, elaboración de FAQs y soporte a clientes.</p><ul><li>Email y redes sociales</li><li>FAQs</li><li>Soporte a clientes</li></ul></div>
+            </article>
+            <article class="service-panel" id="service-panel-5" role="tabpanel" aria-labelledby="service-tab-5" tabindex="0" data-service-panel="4" hidden>
+              <div class="service-visual" aria-hidden="true"></div>
+              <div class="service-panel-copy"><p>EQUIPO</p><h3>Gestión de personas</h3><p>Creación de descripciones de puestos, preselección de candidatos, organización de entrevistas y onboarding de empleados y proveedores.</p><ul><li>Descripciones de puestos</li><li>Selección y entrevistas</li><li>Onboarding</li></ul></div>
+            </article>
+            <article class="service-panel" id="service-panel-6" role="tabpanel" aria-labelledby="service-tab-6" tabindex="0" data-service-panel="5" hidden>
+              <div class="service-visual" aria-hidden="true"></div>
+              <div class="service-panel-copy"><p>PRODUCTIVIDAD</p><h3>Herramientas de productividad</h3><p>Gestión de Microsoft 365, Google Workspace, Trello, Canva, Calendly, Doodle, Holded, Zoom y Slack, junto con herramientas de IA como Claude y Copilot.</p><ul><li>Herramientas de gestión</li><li>Colaboración online</li><li>IA aplicada</li></ul></div>
+            </article>
+            <article class="service-panel" id="service-panel-7" role="tabpanel" aria-labelledby="service-tab-7" tabindex="0" data-service-panel="6" hidden>
+              <div class="service-visual" aria-hidden="true"></div>
+              <div class="service-panel-copy"><p>PRESENCIA</p><h3>Comunicación y marketing digital</h3><p>Programación de contenido, publicación de artículos en redes sociales y optimización de imágenes para web.</p><ul><li>Programación de contenido</li><li>Artículos en redes</li><li>Imágenes para web</li></ul></div>
+            </article>
+            <article class="service-panel" id="service-panel-8" role="tabpanel" aria-labelledby="service-tab-8" tabindex="0" data-service-panel="7" hidden>
+              <div class="service-visual" aria-hidden="true"></div>
+              <div class="service-panel-copy"><p>SINCRONIZACIÓN</p><h3>Eventos y reuniones</h3><p>Organización de eventos, reuniones y agendas online para que personas, horarios e información estén coordinados.</p><ul><li>Eventos</li><li>Reuniones</li><li>Agendas online</li></ul></div>
             </article>
           </div>
 

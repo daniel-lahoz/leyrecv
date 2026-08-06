@@ -3,29 +3,6 @@ const language = document.body.dataset.language === "en" ? "en" : "es";
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
-const serviceContent = {
-  es: [
-    { label: "SISTEMA BASE", title: "Procesos de negocio", description: "Ejecución, evaluación y seguimiento de la eficacia del control interno y la gestión de riesgos de los procesos de negocio.", items: ["Control interno", "Gestión de riesgos", "Seguimiento"] },
-    { label: "VISIBILIDAD", title: "Soporte financiero", description: "Contabilidad, facturación, seguimiento de cobros y pagos, control de gastos, análisis y elaboración de informes financieros y presupuestos.", items: ["Contabilidad y facturación", "Cobros y pagos", "Informes y presupuestos"] },
-    { label: "COORDINACIÓN", title: "Gestión administrativa", description: "Elaboración, actualización y seguimiento de procedimientos internos e informes, gestión documental, agenda, correo electrónico y viajes.", items: ["Procedimientos e informes", "Agenda y correo", "Documentación y viajes"] },
-    { label: "CONEXIÓN", title: "Atención al cliente", description: "Gestión de consultas por email y redes sociales, elaboración de FAQs y soporte a clientes.", items: ["Email y redes sociales", "FAQs", "Soporte a clientes"] },
-    { label: "EQUIPO", title: "Gestión de personas", description: "Creación de descripciones de puestos, preselección de candidatos, organización de entrevistas y onboarding de empleados y proveedores.", items: ["Descripciones de puestos", "Selección y entrevistas", "Onboarding"] },
-    { label: "PRODUCTIVIDAD", title: "Herramientas de productividad", description: "Gestión de Microsoft 365, Google Workspace, Trello, Canva, Calendly, Doodle, Holded, Zoom y Slack, junto con herramientas de IA como Claude y Copilot.", items: ["Herramientas de gestión", "Colaboración online", "IA aplicada"] },
-    { label: "PRESENCIA", title: "Comunicación y marketing digital", description: "Programación de contenido, publicación de artículos en redes sociales y optimización de imágenes para web.", items: ["Programación de contenido", "Artículos en redes", "Imágenes para web"] },
-    { label: "SINCRONIZACIÓN", title: "Eventos y reuniones", description: "Organización de eventos, reuniones y agendas online para que personas, horarios e información estén coordinados.", items: ["Eventos", "Reuniones", "Agendas online"] }
-  ],
-  en: [
-    { label: "BASE SYSTEM", title: "Business processes", description: "Delivering, assessing and monitoring the effectiveness of internal controls and risk management across business processes.", items: ["Internal control", "Risk management", "Monitoring"] },
-    { label: "VISIBILITY", title: "Financial support", description: "Accounting, invoicing, payment and collection tracking, expense control, analysis, financial reporting and budgeting.", items: ["Accounting and invoicing", "Payments and collections", "Reports and budgets"] },
-    { label: "COORDINATION", title: "Administration", description: "Preparing, updating and monitoring internal procedures and reports, alongside document, calendar, email and travel management.", items: ["Procedures and reports", "Calendar and email", "Documents and travel"] },
-    { label: "CONNECTION", title: "Customer support", description: "Managing enquiries via email and social media, preparing FAQs and providing customer support.", items: ["Email and social media", "FAQs", "Customer support"] },
-    { label: "TEAM", title: "People management", description: "Creating job descriptions, pre-screening candidates, organising interviews and onboarding employees and suppliers.", items: ["Job descriptions", "Selection and interviews", "Onboarding"] },
-    { label: "PRODUCTIVITY", title: "Productivity tools", description: "Managing Microsoft 365, Google Workspace, Trello, Canva, Calendly, Doodle, Holded, Zoom and Slack, together with AI tools such as Claude and Copilot.", items: ["Management tools", "Online collaboration", "Applied AI"] },
-    { label: "PRESENCE", title: "Digital communications and marketing", description: "Scheduling content, publishing articles on social media and optimising images for the web.", items: ["Content scheduling", "Social media articles", "Web imagery"] },
-    { label: "SYNCHRONISATION", title: "Events and meetings", description: "Organising events, meetings and online calendars so people, schedules and information stay aligned.", items: ["Events", "Meetings", "Online calendars"] }
-  ]
-};
-
 const visualCopy = {
   es: {
     process: ["ENTRADA", "CONTROL", "MEJORA"], checks: ["Riesgo medido", "Control activo"],
@@ -150,24 +127,32 @@ function initInterface() {
 
 function initServices() {
   const tabs = [...document.querySelectorAll("[data-service]")];
-  const panel = document.querySelector("[data-service-panel]");
-  if (!tabs.length || !panel) return;
+  const panels = [...document.querySelectorAll("[data-service-panel]")];
+  if (!tabs.length || tabs.length !== panels.length) return;
 
-  const visual = panel.querySelector(".service-visual");
-  const label = panel.querySelector("[data-service-label]");
-  const title = panel.querySelector("[data-service-title]");
-  const description = panel.querySelector("[data-service-description]");
-  const list = panel.querySelector("[data-service-list]");
-  const renderVisual = (index) => {
+  const renderVisual = (panel, index) => {
+    if (panel.dataset.visualReady === "true") return;
+    const visual = panel.querySelector(".service-visual");
+    if (!visual) return;
     visual.className = `service-visual service-visual-${index + 1}`;
     visual.innerHTML = getServiceVisual(index);
+    panel.dataset.visualReady = "true";
   };
-  renderVisual(0);
+  panels.forEach((panel, index) => {
+    const active = index === 0;
+    panel.hidden = !active;
+    panel.classList.toggle("is-active", active);
+  });
+  renderVisual(panels[0], 0);
+
+  let activeIndex = 0;
+  let isTransitioning = false;
 
   const activate = (index, focus = false) => {
     const selected = tabs[index];
-    const content = serviceContent[language][index];
-    if (!selected || !content || selected.classList.contains("is-active")) return;
+    const currentPanel = panels[activeIndex];
+    const nextPanel = panels[index];
+    if (!selected || !nextPanel || index === activeIndex || isTransitioning) return;
 
     tabs.forEach((tab, tabIndex) => {
       const active = tabIndex === index;
@@ -175,20 +160,21 @@ function initServices() {
       tab.setAttribute("aria-selected", String(active));
       tab.tabIndex = active ? 0 : -1;
     });
-    panel.classList.add("is-switching");
+    isTransitioning = true;
+    currentPanel.classList.add("is-switching");
 
     window.setTimeout(() => {
-      renderVisual(index);
-      label.textContent = content.label;
-      title.textContent = content.title;
-      description.textContent = content.description;
-      list.replaceChildren(...content.items.map((item) => {
-        const element = document.createElement("li");
-        element.textContent = item;
-        return element;
-      }));
-      panel.setAttribute("aria-labelledby", selected.id);
-      panel.classList.remove("is-switching");
+      currentPanel.hidden = true;
+      currentPanel.classList.remove("is-active", "is-switching");
+      nextPanel.hidden = false;
+      nextPanel.classList.add("is-active", "is-switching");
+      renderVisual(nextPanel, index);
+      activeIndex = index;
+
+      requestAnimationFrame(() => {
+        nextPanel.classList.remove("is-switching");
+        isTransitioning = false;
+      });
       window.dispatchEvent(new CustomEvent("servicechange", { detail: { index } }));
       if (focus) selected.focus();
     }, reduceMotion ? 0 : 180);
