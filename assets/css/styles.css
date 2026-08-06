@@ -330,10 +330,7 @@ h2 em { color: var(--coral); font-weight: inherit; }
 .contact-inner > p:not(.section-kicker) { max-width: 34rem; color: var(--fog); font-size: 1.08rem; }
 .contact-actions { display: flex; align-items: center; margin-top: 2rem; gap: 1.8rem; }
 .button-large { min-height: 4.4rem; padding-inline: 2rem; }
-.vector-contact { width: min(78vw, 24rem); padding-bottom: 1rem; border-bottom: 1px solid rgba(255,250,240,0.22); }
 .contact-label { display: block; margin-bottom: 0.8rem; color: #bac2c0; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
-.vector-text { display: block; width: 100%; height: auto; overflow: visible; color: #fffaf0; }
-.vector-text path { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.85; vector-effect: non-scaling-stroke; }
 .contact-meta { display: flex; margin-top: clamp(5rem, 9vw, 8rem); gap: 1.5rem; color: #7c848e; font-size: 0.51rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 .contact-meta span + span { padding-left: 1.5rem; border-left: 1px solid var(--line); }
 
@@ -930,4 +927,85 @@ h1 { font-size: clamp(4.7rem, 7.8vw, 8.7rem); line-height: 0.82; }
   .timeline-details summary { font-size: 0.52rem; }
   .timeline-details ul { padding-left: 1rem; font-size: 0.9rem; }
   .contact .contact-actions { align-items: center; }
+}
+
+/* Conversion path -------------------------------------------------------- */
+.section-conversion {
+  display: grid;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding: clamp(1.5rem, 3vw, 2.4rem);
+  border-block: 1px solid var(--line);
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2rem;
+  background: rgba(255, 250, 240, 0.34);
+}
+.section-conversion p {
+  margin-bottom: 0.45rem;
+  color: var(--fog);
+  font-size: 0.6rem;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+.section-conversion h3 {
+  margin: 0;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 420;
+  line-height: 1;
+}
+.section-conversion-final { background: rgba(230, 120, 97, 0.08); }
+
+.contact-actions { width: min(100%, 46rem); justify-content: center; }
+.email-link {
+  display: grid;
+  width: min(100%, 31rem);
+  padding: 0.9rem 0 1rem;
+  border-bottom: 1px solid rgba(255, 250, 240, 0.34);
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  color: #fffaf0;
+  text-align: left;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+.email-link:hover { color: var(--coral-bright); border-color: var(--coral); }
+.email-link .contact-label { grid-column: 1 / -1; margin-bottom: 0.55rem; }
+.email-link strong {
+  overflow-wrap: anywhere;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  font-weight: 380;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.email-link i { margin-left: 1rem; color: var(--coral); font-size: 1.25rem; font-style: normal; }
+.copy-email {
+  display: inline-flex;
+  min-height: 3.4rem;
+  padding: 0.75rem 1.15rem;
+  border: 1px solid rgba(255, 250, 240, 0.3);
+  border-radius: 999px;
+  align-items: center;
+  gap: 0.75rem;
+  color: #fffaf0;
+  background: rgba(255, 250, 240, 0.04);
+  cursor: pointer;
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 200ms ease, background 200ms ease, border-color 200ms ease, transform 200ms var(--ease);
+}
+.copy-email:hover { border-color: var(--coral); background: rgba(230, 120, 97, 0.12); transform: translateY(-0.15rem); }
+.copy-email.is-copied { color: var(--night); border-color: var(--sage); background: var(--sage); }
+.copy-email.has-error { border-color: var(--coral); background: rgba(230, 120, 97, 0.16); }
+.copy-email i { font-size: 1rem; font-style: normal; }
+
+@media (max-width: 700px) {
+  .section-conversion { grid-template-columns: 1fr; align-items: start; }
+  .section-conversion .button { width: 100%; }
+  .contact-actions { width: 100%; align-items: center; flex-direction: column; }
+  .email-link { width: min(88vw, 31rem); }
+  .copy-email { justify-content: center; width: min(88vw, 31rem); }
 }

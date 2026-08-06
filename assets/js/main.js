@@ -221,36 +221,53 @@ function initFlowCards() {
   });
 }
 
-function initVectorEmail() {
-  const emailCodes = [104, 111, 108, 97, 64, 108, 101, 121, 114, 101, 97, 108, 99, 97, 108, 100, 101, 46, 99, 111, 109];
-  const glyphs = {
-    a: { width: 7, path: "M6 4V10M6 5.2Q5 4 3.5 4Q1 4 1 7Q1 10 3.5 10Q5 10 6 8.8" },
-    c: { width: 7, path: "M6 5Q5 4 3.5 4Q1 4 1 7Q1 10 3.5 10Q5 10 6 9" },
-    d: { width: 7, path: "M6 1V10M6 5Q5 4 3.5 4Q1 4 1 7Q1 10 3.5 10Q5 10 6 9" },
-    e: { width: 7, path: "M1 7H6Q6 4 3.5 4Q1 4 1 7Q1 10 3.7 10Q5.2 10 6 9" },
-    h: { width: 7, path: "M1 1V10M1 6Q2.5 4 4.5 4Q6 4 6 6V10" },
-    l: { width: 4, path: "M1.5 1V8.5Q1.5 10 3 10" },
-    m: { width: 10, path: "M1 4V10M1 6Q2 4 3.5 4Q5 4 5 6V10M5 6Q6 4 7.5 4Q9 4 9 6V10" },
-    o: { width: 7, path: "M3.5 4Q1 4 1 7Q1 10 3.5 10Q6 10 6 7Q6 4 3.5 4Z" },
-    r: { width: 6, path: "M1 4V10M1 6Q2.5 4 5 4" },
-    y: { width: 7, path: "M1 4L3.5 10M6 4L3.5 10L2 13" },
-    "@": { width: 12, path: "M8.5 9Q7.5 10 5.5 10Q2 10 2 6.5Q2 2.5 6 2.5Q10 2.5 10 6.5V8.5Q10 10 8.5 10Q7 10 7 8V5M7 5Q6 4 5 5Q4 6 4 7.5Q4 9 5.5 9Q7 9 7 7.5" },
-    ".": { width: 3, path: "M1.5 9.5L1.5 10" }
-  };
-  const namespace = "http://www.w3.org/2000/svg";
+function initEmailActions() {
+  const status = document.querySelector("[data-copy-status]");
 
-  document.querySelectorAll("[data-vector-text='email']").forEach((svg) => {
-    let offset = 0;
-    [...String.fromCharCode(...emailCodes)].forEach((character) => {
-      const glyph = glyphs[character];
-      if (!glyph) return;
-      const path = document.createElementNS(namespace, "path");
-      path.setAttribute("d", glyph.path);
-      path.setAttribute("transform", `translate(${offset} 0)`);
-      svg.appendChild(path);
-      offset += glyph.width + 1;
+  const fallbackCopy = (value) => {
+    const textarea = document.createElement("textarea");
+    textarea.value = value;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    const copied = typeof document.execCommand === "function" && document.execCommand("copy");
+    textarea.remove();
+    return copied;
+  };
+
+  document.querySelectorAll("[data-copy-email]").forEach((button) => {
+    const label = button.querySelector("[data-copy-label]");
+    const defaultLabel = label?.textContent || "";
+    let resetTimer;
+
+    button.addEventListener("click", async () => {
+      const email = button.dataset.copyEmail;
+      let copied = false;
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(email);
+          copied = true;
+        } else {
+          copied = fallbackCopy(email);
+        }
+      } catch {
+        copied = fallbackCopy(email);
+      }
+
+      const message = copied ? button.dataset.copySuccess : button.dataset.copyError;
+      if (status) status.textContent = message;
+      window.clearTimeout(resetTimer);
+      button.classList.toggle("is-copied", copied);
+      button.classList.toggle("has-error", !copied);
+      if (label) label.textContent = message;
+      resetTimer = window.setTimeout(() => {
+        button.classList.remove("is-copied", "has-error");
+        if (label) label.textContent = defaultLabel;
+      }, 2200);
     });
-    svg.setAttribute("viewBox", `0 0 ${Math.max(offset - 1, 1)} 14`);
   });
 }
 
@@ -441,7 +458,7 @@ function initThreeBursts() {
 initInterface();
 initServices();
 initFlowCards();
-initVectorEmail();
+initEmailActions();
 initPointerEffects();
 initPortraitParallax();
 initThreeBursts();

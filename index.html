@@ -22,10 +22,10 @@
     <link rel="preload" href="assets/fonts/manrope-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/fonts/newsreader-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/images/leyre-portrait-960.webp" as="image" type="image/webp" imagesrcset="assets/images/leyre-portrait-640.webp 640w, assets/images/leyre-portrait-960.webp 960w, assets/images/leyre-portrait-1200.webp 1003w" imagesizes="(max-width: 840px) 82vw, 40vw" fetchpriority="high" />
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260806-10" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260806-11" />
     <script>document.documentElement.classList.add("js");</script>
     <script src="assets/vendor/three.min.js" defer></script>
-    <script src="assets/js/main.js?v=20260806-9" defer></script>
+    <script src="assets/js/main.js?v=20260806-10" defer></script>
     <title>Leyre Alcalde — Asistente virtual · Control in Motion</title>
   </head>
   <body data-language="es">
@@ -70,7 +70,7 @@
             </h1>
             <p class="hero-lede hero-enter hero-enter-3">Convierto tareas, procesos y pendientes en un sistema claro para que recuperes tiempo y puedas avanzar con tranquilidad.</p>
             <div class="hero-actions hero-enter hero-enter-4">
-              <a class="button button-signal magnetic" href="#contacto"><span>Cuéntame qué necesitas</span><i aria-hidden="true">↗</i></a>
+              <a class="button button-signal magnetic" href="#contacto"><span>Cuéntame tu situación</span><i aria-hidden="true">↗</i></a>
               <a class="text-link" href="#sistema">Descubre el sistema <i aria-hidden="true">↓</i></a>
             </div>
           </div>
@@ -197,6 +197,14 @@
               </div>
             </article>
           </div>
+
+          <aside class="section-conversion reveal" aria-label="Siguiente paso">
+            <div>
+              <p>¿Hay algo que te está quitando demasiado tiempo?</p>
+              <h3>Empecemos por ahí.</h3>
+            </div>
+            <a class="button button-signal magnetic" href="#contacto"><span>Cuéntame tu situación</span><i aria-hidden="true">↗</i></a>
+          </aside>
         </div>
       </section>
 
@@ -284,6 +292,14 @@
               </article>
             </div>
           </div>
+
+          <aside class="section-conversion section-conversion-final reveal" aria-label="Siguiente paso">
+            <div>
+              <p>Rigor para tus procesos. Más tiempo para tu negocio.</p>
+              <h3>¿Lo ponemos en marcha?</h3>
+            </div>
+            <a class="button button-signal magnetic" href="#contacto"><span>Cuéntame tu situación</span><i aria-hidden="true">↗</i></a>
+          </aside>
         </div>
       </section>
 
@@ -294,11 +310,17 @@
           <h2 id="contact-title">¿Ponemos tu negocio<br /><em>en movimiento?</em></h2>
           <p>Cuéntame qué está ocupando demasiado tiempo. Podemos empezar justo ahí.</p>
           <div class="contact-actions">
-            <div class="vector-contact">
+            <a class="email-link" href="mailto:hola@leyrealcalde.com" aria-label="Escribir a hola@leyrealcalde.com">
               <span class="contact-label">Correo</span>
-              <svg class="vector-text" data-vector-text="email" viewBox="0 0 210 13" role="img" aria-label="Dirección de correo representada gráficamente"></svg>
-            </div>
+              <strong>hola@leyrealcalde.com</strong>
+              <i aria-hidden="true">↗</i>
+            </a>
+            <button class="copy-email" type="button" data-copy-email="hola@leyrealcalde.com" data-copy-success="Correo copiado" data-copy-error="No se pudo copiar">
+              <span data-copy-label>Copiar correo</span>
+              <i aria-hidden="true">⧉</i>
+            </button>
           </div>
+          <p class="sr-only" role="status" aria-live="polite" data-copy-status></p>
           <div class="contact-meta"><span>Madrid · España</span><span>Disponible para colaboraciones remotas</span><span>ES / EN</span></div>
         </div>
       </section>
