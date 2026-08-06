@@ -787,6 +787,49 @@ h1 { font-size: clamp(4.7rem, 7.8vw, 8.7rem); line-height: 0.82; }
 .experience-number strong { font-size: clamp(7rem, 10vw, 10rem); line-height: 0.7; }
 .experience-number > span { font-size: 3rem; }
 .experience-number small { display: block; grid-column: 1 / -1; margin-top: 1.4rem; align-self: auto; padding: 0; }
+.experience-record { min-width: 0; }
+.timeline-group-label {
+  margin: 0;
+  padding: 1.1rem 0 0.85rem;
+  color: var(--coral);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.timeline-group-label.education-label { margin-top: 3.2rem; border-top: 1px solid rgba(23,38,44,0.2); }
+.experience-record .timeline-item { grid-template-columns: 9.6rem minmax(0, 1fr); }
+.experience-record .timeline-date { white-space: nowrap; }
+.timeline-content { min-width: 0; }
+.timeline-details { margin-top: 1.25rem; border-top: 1px solid rgba(23,38,44,0.14); }
+.timeline-details summary {
+  display: flex;
+  min-height: 3rem;
+  cursor: pointer;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #4d585c;
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.timeline-details summary::-webkit-details-marker { display: none; }
+.timeline-details summary i { position: relative; flex: 0 0 auto; width: 1rem; height: 1rem; }
+.timeline-details summary i::before,
+.timeline-details summary i::after { position: absolute; top: 50%; left: 0; width: 100%; height: 1px; content: ""; background: var(--coral); transition: transform 180ms var(--ease); }
+.timeline-details summary i::after { transform: rotate(90deg); }
+.timeline-details[open] summary i::after { transform: rotate(0); }
+.timeline-details summary:focus-visible { outline-color: var(--coral); outline-offset: 3px; }
+.timeline-details ul { display: grid; margin: 0.35rem 0 0; padding: 0 0 0 1.15rem; gap: 0.75rem; color: #596168; }
+.timeline-details li { padding-left: 0.35rem; }
+.timeline-details li::marker { color: var(--coral); }
+.timeline-item-education { padding-block: 2.15rem; }
+.timeline-item-education h3 { margin-bottom: 0; font-size: clamp(1.5rem, 2.4vw, 2.25rem); line-height: 1.08; }
+.timeline-item h3 small { display: inline-block; margin-left: 0.35rem; color: #687079; font-family: "Manrope", Arial, sans-serif; font-size: 0.52rem; font-weight: 750; letter-spacing: 0.1em; text-transform: uppercase; vertical-align: middle; }
+.timeline-item .education-note { max-width: 40rem; margin: 0.85rem 0 0; color: #596168; }
 
 @keyframes score-breathe { 50% { transform: scale(1.035); box-shadow: 0 0 0 0.55rem rgba(230,120,97,0.07); } }
 @keyframes flow-travel { 0% { left: 0; opacity: 0; } 12%, 88% { opacity: 1; } 100% { left: calc(100% - 0.58rem); opacity: 0; } }
@@ -831,6 +874,7 @@ h1 { font-size: clamp(4.7rem, 7.8vw, 8.7rem); line-height: 0.82; }
   .experience-number strong { font-size: 5.5rem; }
   .experience-number > span { align-self: start; font-size: 2rem; }
   .experience-number small { grid-column: 3; margin: 0 0 0.25rem 1.3rem; }
+  .experience-record .timeline-item { grid-template-columns: 9.6rem minmax(0, 1fr); }
 }
 
 @media (max-width: 580px) {
@@ -861,5 +905,10 @@ h1 { font-size: clamp(4.7rem, 7.8vw, 8.7rem); line-height: 0.82; }
   .experience-number strong { font-size: 4.8rem; }
   .experience-number > span { font-size: 1.75rem; }
   .experience-number small { margin-left: 1rem; font-size: 0.48rem; }
+  .experience-record .timeline-item { grid-template-columns: 1fr; gap: 0.8rem; }
+  .experience-record .timeline-date { font-size: 0.49rem; }
+  .timeline-group-label.education-label { margin-top: 2.4rem; }
+  .timeline-details summary { font-size: 0.52rem; }
+  .timeline-details ul { padding-left: 1rem; font-size: 0.9rem; }
   .contact .contact-actions { align-items: center; }
 }
