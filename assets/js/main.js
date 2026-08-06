@@ -8,9 +8,9 @@ const visualCopy = {
     process: ["ENTRADA", "CONTROL", "MEJORA"], checks: ["Riesgo medido", "Control activo"],
     admin: ["L", "M", "X", "J", "V"], inbox: "Bandeja al día", meeting: "Reunión · 11:30",
     finance: "Flujo mensual", invoice: "Factura 024", paid: "Cobro confirmado",
-    customer: "Tiempo de respuesta", resolved: "Consulta resuelta", satisfaction: "Satisfacción", question: "¿Podemos cambiar la fecha?", answer: "Claro, ya está actualizado",
+    customer: "Atención bilingüe", resolved: "Consulta resuelta", satisfaction: "Satisfacción", question: "¿Podemos cambiar la fecha?", answer: "Claro, ya está actualizado",
     people: ["PUESTO", "CANDIDATOS", "ENTREVISTA", "ONBOARDING"], peopleReady: "Incorporación coordinada",
-    digital: ["POST", "EMAIL", "WEB"], scheduled: "Contenido programado", days: "DÍAS",
+    digital: ["POST", "EMAIL", "WEB"], scheduled: "Contenido programado",
     events: "Agenda coordinada", guests: "6 asistentes", times: ["09:30", "12:00", "17:00"],
     tools: ["M365", "WORKSPACE", "TRELLO", "HOLDED", "CLAUDE", "COPILOT"], connected: "Flujo conectado"
   },
@@ -18,9 +18,9 @@ const visualCopy = {
     process: ["INPUT", "CONTROL", "IMPROVE"], checks: ["Risk measured", "Control active"],
     admin: ["M", "T", "W", "T", "F"], inbox: "Inbox cleared", meeting: "Meeting · 11:30",
     finance: "Monthly flow", invoice: "Invoice 024", paid: "Payment confirmed",
-    customer: "Response time", resolved: "Enquiry resolved", satisfaction: "Satisfaction", question: "Could we change the date?", answer: "Of course, it is updated",
+    customer: "Bilingual support", resolved: "Enquiry resolved", satisfaction: "Satisfaction", question: "Could we change the date?", answer: "Of course, it is updated",
     people: ["ROLE", "CANDIDATES", "INTERVIEW", "ONBOARDING"], peopleReady: "Onboarding coordinated",
-    digital: ["POST", "EMAIL", "WEB"], scheduled: "Content scheduled", days: "DAYS",
+    digital: ["POST", "EMAIL", "WEB"], scheduled: "Content scheduled",
     events: "Calendar aligned", guests: "6 attendees", times: ["09:30", "12:00", "17:00"],
     tools: ["M365", "WORKSPACE", "TRELLO", "HOLDED", "CLAUDE", "COPILOT"], connected: "Connected workflow"
   }
@@ -34,10 +34,10 @@ function getServiceVisual(index) {
     `<div class="visual-stage visual-process"><div class="process-route"><i class="route-pulse"></i>${copy.process.map((item, itemIndex) => `<div class="process-node node-${itemIndex + 1}"><span>0${itemIndex + 1}</span><strong>${item}</strong></div>`).join("")}</div><div class="process-checks"><span>✓ ${copy.checks[0]}</span><span>✓ ${copy.checks[1]}</span></div></div>`,
     `<div class="visual-stage visual-finance"><div class="finance-head"><span>${copy.finance}</span><strong>+18%</strong></div><div class="finance-chart">${[42, 68, 54, 84, 73, 96].map((height, itemIndex) => `<i style="--bar:${height}%;--delay:${itemIndex * 80}ms"></i>`).join("")}<span class="chart-line"></span></div><div class="invoice-card"><span>${copy.invoice}</span><strong>1.240 €</strong><small>● ${copy.paid}</small></div></div>`,
     `<div class="visual-stage visual-admin"><div class="admin-calendar"><div class="calendar-top"><span>JUL / 26</span><i></i></div><div class="calendar-days">${copy.admin.map((day, dayIndex) => `<span class="${dayIndex === 2 ? "is-today" : ""}">${day}<b>${14 + dayIndex}</b></span>`).join("")}</div></div><div class="admin-message message-a"><i></i><span>${copy.inbox}</span><b>04</b></div><div class="admin-message message-b"><i></i><span>${copy.meeting}</span><b>✓</b></div></div>`,
-    `<div class="visual-stage visual-customer"><div class="response-ring"><strong>08</strong><span>MIN</span><small>${copy.customer}</small></div><div class="chat-stack"><p class="chat-in">${copy.question}</p><p class="chat-out">${copy.answer} <i>✓✓</i></p><span class="typing"><i></i><i></i><i></i></span></div><div class="customer-score"><span>${copy.satisfaction}</span><strong>98%</strong><small>● ${copy.resolved}</small></div></div>`,
+    `<div class="visual-stage visual-customer"><div class="response-ring response-ring-bilingual"><strong>ES·EN</strong><small>${copy.customer}</small></div><div class="chat-stack"><p class="chat-in">${copy.question}</p><p class="chat-out">${copy.answer} <i>✓✓</i></p><span class="typing"><i></i><i></i><i></i></span></div><div class="customer-score"><span>${copy.satisfaction}</span><strong>98%</strong><small>● ${copy.resolved}</small></div></div>`,
     `<div class="visual-stage visual-people"><div class="people-route">${copy.people.map((item, itemIndex) => `<div class="people-step"><span>0${itemIndex + 1}</span><i></i><strong>${item}</strong></div>`).join("")}</div><div class="people-status"><i></i>${copy.peopleReady}</div></div>`,
     `<div class="visual-stage visual-tools"><div class="tool-network"><span class="network-line line-a"></span><span class="network-line line-b"></span><span class="network-line line-c"></span><span class="network-line line-d"></span><span class="network-line line-e"></span><span class="network-line line-f"></span><div class="tool-hub"><i></i><strong>FLOW</strong></div>${copy.tools.map((item, itemIndex) => `<div class="tool-node tool-node-${itemIndex + 1}"><span>${item}</span></div>`).join("")}</div><div class="automation-track"><i></i><span>INPUT</span><b>${copy.connected}</b><span>DONE</span></div></div>`,
-    `<div class="visual-stage visual-digital"><div class="content-core"><strong>07</strong><span>${copy.days}</span></div><div class="content-orbit">${copy.digital.map((item, itemIndex) => `<div class="content-node content-node-${itemIndex + 1}"><i></i><strong>${item}</strong><small>0${itemIndex + 1}</small></div>`).join("")}</div><div class="content-status"><i></i>${copy.scheduled}</div></div>`,
+    `<div class="visual-stage visual-digital"><div class="content-core internet-globe"><span class="globe-equator"></span><span class="globe-route"></span><i class="globe-dot globe-dot-a"></i><i class="globe-dot globe-dot-b"></i><i class="globe-dot globe-dot-c"></i></div><div class="content-orbit">${copy.digital.map((item, itemIndex) => `<div class="content-node content-node-${itemIndex + 1}"><i></i><strong>${item}</strong></div>`).join("")}</div><div class="content-status"><i></i>${copy.scheduled}</div></div>`,
     `<div class="visual-stage visual-events"><div class="event-date"><span>JUL</span><strong>18</strong><small>${copy.guests}</small></div><div class="event-track"><i class="event-progress"></i>${copy.times.map((time, itemIndex) => `<div class="event-stop stop-${itemIndex + 1}"><span>${time}</span><b></b></div>`).join("")}</div><div class="attendees"><i></i><i></i><i></i><i></i><span>+2</span></div><div class="event-status">✓ ${copy.events}</div></div>`
   ];
   return `${visuals[index]}${coordinate}`;
@@ -129,6 +129,48 @@ function initServices() {
   const tabs = [...document.querySelectorAll("[data-service]")];
   const panels = [...document.querySelectorAll("[data-service-panel]")];
   if (!tabs.length || tabs.length !== panels.length) return;
+
+  const serviceNav = tabs[0].closest(".service-nav");
+  const serviceConsole = tabs[0].closest("[data-service-console]");
+  if (serviceNav && serviceConsole) {
+    const mobileServices = window.matchMedia("(max-width: 840px)");
+    const labels = language === "en"
+      ? { previous: "Show previous services", next: "Show more services" }
+      : { previous: "Ver servicios anteriores", next: "Ver más servicios" };
+    const controls = document.createElement("div");
+    controls.className = "service-scroll-controls";
+    controls.innerHTML = `<button class="service-scroll-button service-scroll-previous" type="button" aria-label="${labels.previous}"><span aria-hidden="true">←</span></button><button class="service-scroll-button service-scroll-next" type="button" aria-label="${labels.next}"><span aria-hidden="true">→</span></button>`;
+    serviceConsole.append(controls);
+
+    const previousButton = controls.querySelector(".service-scroll-previous");
+    const nextButton = controls.querySelector(".service-scroll-next");
+    let scrollFrame = 0;
+
+    const updateScrollButtons = () => {
+      scrollFrame = 0;
+      const maxScroll = Math.max(0, serviceNav.scrollWidth - serviceNav.clientWidth);
+      const hasOverflow = mobileServices.matches && maxScroll > 2;
+      previousButton.hidden = !hasOverflow || serviceNav.scrollLeft <= 2;
+      nextButton.hidden = !hasOverflow || serviceNav.scrollLeft >= maxScroll - 2;
+    };
+    const scheduleScrollUpdate = () => {
+      if (scrollFrame) return;
+      scrollFrame = requestAnimationFrame(updateScrollButtons);
+    };
+    const scrollServices = (direction) => {
+      const tabWidth = tabs[0].getBoundingClientRect().width;
+      const distance = Math.max(tabWidth, serviceNav.clientWidth * 0.78);
+      serviceNav.scrollBy({ left: direction * distance, behavior: reduceMotion ? "auto" : "smooth" });
+    };
+
+    previousButton.addEventListener("click", () => scrollServices(-1));
+    nextButton.addEventListener("click", () => scrollServices(1));
+    serviceNav.addEventListener("scroll", scheduleScrollUpdate, { passive: true });
+    mobileServices.addEventListener("change", scheduleScrollUpdate);
+    window.addEventListener("resize", scheduleScrollUpdate, { passive: true });
+    if ("ResizeObserver" in window) new ResizeObserver(scheduleScrollUpdate).observe(serviceNav);
+    requestAnimationFrame(updateScrollButtons);
+  }
 
   const renderVisual = (panel, index) => {
     if (panel.dataset.visualReady === "true") return;
