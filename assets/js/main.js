@@ -5,22 +5,24 @@ const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
 const serviceContent = {
   es: [
-    { label: "SISTEMA BASE", title: "Procesos de negocio", description: "Evaluación y mejora del control interno y la gestión de riesgos para que cada proceso sea más claro, sólido y eficiente.", items: ["Control interno", "Gestión de riesgos", "Mejora de procesos"] },
-    { label: "COORDINACIÓN", title: "Gestión administrativa", description: "Agenda, correo, viajes, documentación y procedimientos internos gestionados con método y continuidad.", items: ["Agenda y correo", "Documentación", "Viajes y coordinación"] },
-    { label: "VISIBILIDAD", title: "Soporte financiero", description: "Facturación, seguimiento de cobros y pagos, control de gastos e informes básicos para tener siempre una visión clara.", items: ["Facturación", "Cobros y pagos", "Control de gastos"] },
-    { label: "CONEXIÓN", title: "Atención al cliente", description: "Gestión cercana y profesional de consultas por email, WhatsApp y redes, con respuestas consistentes y bien organizadas.", items: ["Consultas", "FAQs", "Seguimiento"] },
-    { label: "PRESENCIA", title: "Comunicación digital", description: "Programación de contenido, redes sociales, email marketing y mantenimiento web básico para sostener tu presencia digital.", items: ["Contenido", "Email marketing", "Redes sociales"] },
-    { label: "SINCRONIZACIÓN", title: "Eventos y reuniones", description: "Organización de reuniones, agendas online y eventos para que personas, horarios e información lleguen alineados.", items: ["Reuniones", "Eventos", "Agendas online"] },
-    { label: "ACELERACIÓN", title: "Productividad e IA", description: "Uso práctico de herramientas digitales y de inteligencia artificial para reducir fricción y ganar eficiencia sin perder criterio.", items: ["Microsoft 365", "Workspace", "IA aplicada"] }
+    { label: "SISTEMA BASE", title: "Procesos de negocio", description: "Ejecución, evaluación y seguimiento de la eficacia del control interno y la gestión de riesgos de los procesos de negocio.", items: ["Control interno", "Gestión de riesgos", "Seguimiento"] },
+    { label: "VISIBILIDAD", title: "Soporte financiero", description: "Contabilidad, facturación, seguimiento de cobros y pagos, control de gastos, análisis y elaboración de informes financieros y presupuestos.", items: ["Contabilidad y facturación", "Cobros y pagos", "Informes y presupuestos"] },
+    { label: "COORDINACIÓN", title: "Gestión administrativa", description: "Elaboración, actualización y seguimiento de procedimientos internos e informes, gestión documental, agenda, correo electrónico y viajes.", items: ["Procedimientos e informes", "Agenda y correo", "Documentación y viajes"] },
+    { label: "CONEXIÓN", title: "Atención al cliente", description: "Gestión de consultas por email y redes sociales, elaboración de FAQs y soporte a clientes.", items: ["Email y redes sociales", "FAQs", "Soporte a clientes"] },
+    { label: "EQUIPO", title: "Gestión de personas", description: "Creación de descripciones de puestos, preselección de candidatos, organización de entrevistas y onboarding de empleados y proveedores.", items: ["Descripciones de puestos", "Selección y entrevistas", "Onboarding"] },
+    { label: "PRODUCTIVIDAD", title: "Herramientas de productividad", description: "Gestión de Microsoft 365, Google Workspace, Trello, Canva, Calendly, Doodle, Holded, Zoom y Slack, junto con herramientas de IA como Claude y Copilot.", items: ["Herramientas de gestión", "Colaboración online", "IA aplicada"] },
+    { label: "PRESENCIA", title: "Comunicación y marketing digital", description: "Programación de contenido, publicación de artículos en redes sociales y optimización de imágenes para web.", items: ["Programación de contenido", "Artículos en redes", "Imágenes para web"] },
+    { label: "SINCRONIZACIÓN", title: "Eventos y reuniones", description: "Organización de eventos, reuniones y agendas online para que personas, horarios e información estén coordinados.", items: ["Eventos", "Reuniones", "Agendas online"] }
   ],
   en: [
-    { label: "BASE SYSTEM", title: "Business processes", description: "Reviewing and improving internal controls and risk management to make every process clearer, stronger and more efficient.", items: ["Internal control", "Risk management", "Process improvement"] },
-    { label: "COORDINATION", title: "Administration", description: "Calendar, email, travel, documentation and internal procedures managed with method and continuity.", items: ["Calendar and email", "Documentation", "Travel coordination"] },
-    { label: "VISIBILITY", title: "Financial support", description: "Invoicing, receivables and payments, expense control and basic reporting, so you always have a clear view.", items: ["Invoicing", "Receivables", "Expense control"] },
-    { label: "CONNECTION", title: "Customer support", description: "Close, professional management of enquiries through email, WhatsApp and social media, with consistent and organised replies.", items: ["Enquiries", "FAQs", "Follow-up"] },
-    { label: "PRESENCE", title: "Digital communications", description: "Content scheduling, social media, email marketing and basic website upkeep to sustain your digital presence.", items: ["Content", "Email marketing", "Social media"] },
-    { label: "SYNCHRONISATION", title: "Events and meetings", description: "Coordinating meetings, online calendars and events so people, schedules and information stay aligned.", items: ["Meetings", "Events", "Online calendars"] },
-    { label: "ACCELERATION", title: "Productivity and AI", description: "Practical use of digital and AI tools to reduce friction and improve efficiency without losing human judgement.", items: ["Microsoft 365", "Workspace", "Applied AI"] }
+    { label: "BASE SYSTEM", title: "Business processes", description: "Delivering, assessing and monitoring the effectiveness of internal controls and risk management across business processes.", items: ["Internal control", "Risk management", "Monitoring"] },
+    { label: "VISIBILITY", title: "Financial support", description: "Accounting, invoicing, payment and collection tracking, expense control, analysis, financial reporting and budgeting.", items: ["Accounting and invoicing", "Payments and collections", "Reports and budgets"] },
+    { label: "COORDINATION", title: "Administration", description: "Preparing, updating and monitoring internal procedures and reports, alongside document, calendar, email and travel management.", items: ["Procedures and reports", "Calendar and email", "Documents and travel"] },
+    { label: "CONNECTION", title: "Customer support", description: "Managing enquiries via email and social media, preparing FAQs and providing customer support.", items: ["Email and social media", "FAQs", "Customer support"] },
+    { label: "TEAM", title: "People management", description: "Creating job descriptions, pre-screening candidates, organising interviews and onboarding employees and suppliers.", items: ["Job descriptions", "Selection and interviews", "Onboarding"] },
+    { label: "PRODUCTIVITY", title: "Productivity tools", description: "Managing Microsoft 365, Google Workspace, Trello, Canva, Calendly, Doodle, Holded, Zoom and Slack, together with AI tools such as Claude and Copilot.", items: ["Management tools", "Online collaboration", "Applied AI"] },
+    { label: "PRESENCE", title: "Digital communications and marketing", description: "Scheduling content, publishing articles on social media and optimising images for the web.", items: ["Content scheduling", "Social media articles", "Web imagery"] },
+    { label: "SYNCHRONISATION", title: "Events and meetings", description: "Organising events, meetings and online calendars so people, schedules and information stay aligned.", items: ["Events", "Meetings", "Online calendars"] }
   ]
 };
 
@@ -30,32 +32,36 @@ const visualCopy = {
     admin: ["L", "M", "X", "J", "V"], inbox: "Bandeja al día", meeting: "Reunión · 11:30",
     finance: "Flujo mensual", invoice: "Factura 024", paid: "Cobro confirmado",
     customer: "Tiempo de respuesta", resolved: "Consulta resuelta", satisfaction: "Satisfacción", question: "¿Podemos cambiar la fecha?", answer: "Claro, ya está actualizado",
+    people: ["PUESTO", "CANDIDATOS", "ENTREVISTA", "ONBOARDING"], peopleReady: "Incorporación coordinada",
     digital: ["POST", "EMAIL", "WEB"], scheduled: "Contenido programado", days: "DÍAS",
     events: "Agenda coordinada", guests: "6 asistentes", times: ["09:30", "12:00", "17:00"],
-    tools: ["M365", "AI", "CLAUDE", "AGENTS", "ChatGPT", "SKILL"], connected: "Flujo conectado"
+    tools: ["M365", "WORKSPACE", "TRELLO", "HOLDED", "CLAUDE", "COPILOT"], connected: "Flujo conectado"
   },
   en: {
     process: ["INPUT", "CONTROL", "IMPROVE"], checks: ["Risk measured", "Control active"],
     admin: ["M", "T", "W", "T", "F"], inbox: "Inbox cleared", meeting: "Meeting · 11:30",
     finance: "Monthly flow", invoice: "Invoice 024", paid: "Payment confirmed",
     customer: "Response time", resolved: "Enquiry resolved", satisfaction: "Satisfaction", question: "Could we change the date?", answer: "Of course, it is updated",
+    people: ["ROLE", "CANDIDATES", "INTERVIEW", "ONBOARDING"], peopleReady: "Onboarding coordinated",
     digital: ["POST", "EMAIL", "WEB"], scheduled: "Content scheduled", days: "DAYS",
     events: "Calendar aligned", guests: "6 attendees", times: ["09:30", "12:00", "17:00"],
-    tools: ["M365", "AI", "CLAUDE", "AGENTS", "ChatGPT", "SKILL"], connected: "Connected workflow"
+    tools: ["M365", "WORKSPACE", "TRELLO", "HOLDED", "CLAUDE", "COPILOT"], connected: "Connected workflow"
   }
 };
 
 function getServiceVisual(index) {
   const copy = visualCopy[language];
-  const coordinate = `<span class="mini-coordinate">MODULE / <i>${String(index + 1).padStart(2, "0")}</i></span>`;
+  const coordinateLabel = language === "en" ? "SERVICE" : "SERVICIO";
+  const coordinate = `<span class="mini-coordinate">${coordinateLabel} / <i>${String(index + 1).padStart(2, "0")}</i></span>`;
   const visuals = [
     `<div class="visual-stage visual-process"><div class="process-route"><i class="route-pulse"></i>${copy.process.map((item, itemIndex) => `<div class="process-node node-${itemIndex + 1}"><span>0${itemIndex + 1}</span><strong>${item}</strong></div>`).join("")}</div><div class="process-checks"><span>✓ ${copy.checks[0]}</span><span>✓ ${copy.checks[1]}</span></div></div>`,
-    `<div class="visual-stage visual-admin"><div class="admin-calendar"><div class="calendar-top"><span>JUL / 26</span><i></i></div><div class="calendar-days">${copy.admin.map((day, dayIndex) => `<span class="${dayIndex === 2 ? "is-today" : ""}">${day}<b>${14 + dayIndex}</b></span>`).join("")}</div></div><div class="admin-message message-a"><i></i><span>${copy.inbox}</span><b>04</b></div><div class="admin-message message-b"><i></i><span>${copy.meeting}</span><b>✓</b></div></div>`,
     `<div class="visual-stage visual-finance"><div class="finance-head"><span>${copy.finance}</span><strong>+18%</strong></div><div class="finance-chart">${[42, 68, 54, 84, 73, 96].map((height, itemIndex) => `<i style="--bar:${height}%;--delay:${itemIndex * 80}ms"></i>`).join("")}<span class="chart-line"></span></div><div class="invoice-card"><span>${copy.invoice}</span><strong>1.240 €</strong><small>● ${copy.paid}</small></div></div>`,
+    `<div class="visual-stage visual-admin"><div class="admin-calendar"><div class="calendar-top"><span>JUL / 26</span><i></i></div><div class="calendar-days">${copy.admin.map((day, dayIndex) => `<span class="${dayIndex === 2 ? "is-today" : ""}">${day}<b>${14 + dayIndex}</b></span>`).join("")}</div></div><div class="admin-message message-a"><i></i><span>${copy.inbox}</span><b>04</b></div><div class="admin-message message-b"><i></i><span>${copy.meeting}</span><b>✓</b></div></div>`,
     `<div class="visual-stage visual-customer"><div class="response-ring"><strong>08</strong><span>MIN</span><small>${copy.customer}</small></div><div class="chat-stack"><p class="chat-in">${copy.question}</p><p class="chat-out">${copy.answer} <i>✓✓</i></p><span class="typing"><i></i><i></i><i></i></span></div><div class="customer-score"><span>${copy.satisfaction}</span><strong>98%</strong><small>● ${copy.resolved}</small></div></div>`,
+    `<div class="visual-stage visual-people"><div class="people-route">${copy.people.map((item, itemIndex) => `<div class="people-step"><span>0${itemIndex + 1}</span><i></i><strong>${item}</strong></div>`).join("")}</div><div class="people-status"><i></i>${copy.peopleReady}</div></div>`,
+    `<div class="visual-stage visual-tools"><div class="tool-network"><span class="network-line line-a"></span><span class="network-line line-b"></span><span class="network-line line-c"></span><span class="network-line line-d"></span><span class="network-line line-e"></span><span class="network-line line-f"></span><div class="tool-hub"><i></i><strong>FLOW</strong></div>${copy.tools.map((item, itemIndex) => `<div class="tool-node tool-node-${itemIndex + 1}"><span>${item}</span></div>`).join("")}</div><div class="automation-track"><i></i><span>INPUT</span><b>${copy.connected}</b><span>DONE</span></div></div>`,
     `<div class="visual-stage visual-digital"><div class="content-core"><strong>07</strong><span>${copy.days}</span></div><div class="content-orbit">${copy.digital.map((item, itemIndex) => `<div class="content-node content-node-${itemIndex + 1}"><i></i><strong>${item}</strong><small>0${itemIndex + 1}</small></div>`).join("")}</div><div class="content-status"><i></i>${copy.scheduled}</div></div>`,
-    `<div class="visual-stage visual-events"><div class="event-date"><span>JUL</span><strong>18</strong><small>${copy.guests}</small></div><div class="event-track"><i class="event-progress"></i>${copy.times.map((time, itemIndex) => `<div class="event-stop stop-${itemIndex + 1}"><span>${time}</span><b></b></div>`).join("")}</div><div class="attendees"><i></i><i></i><i></i><i></i><span>+2</span></div><div class="event-status">✓ ${copy.events}</div></div>`,
-    `<div class="visual-stage visual-tools"><div class="tool-network"><span class="network-line line-a"></span><span class="network-line line-b"></span><span class="network-line line-c"></span><span class="network-line line-d"></span><span class="network-line line-e"></span><span class="network-line line-f"></span><div class="tool-hub"><i></i><strong>FLOW</strong></div>${copy.tools.map((item, itemIndex) => `<div class="tool-node tool-node-${itemIndex + 1}"><span>${item}</span></div>`).join("")}</div><div class="automation-track"><i></i><span>INPUT</span><b>${copy.connected}</b><span>DONE</span></div></div>`
+    `<div class="visual-stage visual-events"><div class="event-date"><span>JUL</span><strong>18</strong><small>${copy.guests}</small></div><div class="event-track"><i class="event-progress"></i>${copy.times.map((time, itemIndex) => `<div class="event-stop stop-${itemIndex + 1}"><span>${time}</span><b></b></div>`).join("")}</div><div class="attendees"><i></i><i></i><i></i><i></i><span>+2</span></div><div class="event-status">✓ ${copy.events}</div></div>`
   ];
   return `${visuals[index]}${coordinate}`;
 }

@@ -758,6 +758,20 @@ h1 { font-size: clamp(4.7rem, 7.8vw, 8.7rem); line-height: 0.82; }
 .customer-score strong { font-family: "Newsreader", Georgia, serif; font-size: 1.7rem; font-weight: 500; }
 .customer-score small { color: #668854; font-size: 0.45rem; }
 
+.visual-people { display: grid; padding: 2.4rem 1.5rem 3rem; place-items: center; }
+.people-route { position: relative; z-index: 2; display: grid; width: min(94%, 34rem); grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.7rem; }
+.people-route::before { position: absolute; z-index: -1; top: 50%; right: 5%; left: 5%; height: 1px; content: ""; background: linear-gradient(90deg, var(--sage), var(--coral)); }
+.people-step { position: relative; display: flex; min-width: 0; min-height: 7.5rem; padding: 0.7rem; border: 1px solid var(--line); align-items: center; flex-direction: column; justify-content: space-between; background: rgba(251,248,241,0.94); box-shadow: 0 0.8rem 1.8rem rgba(23,38,44,0.08); animation: people-step 3.2s ease-in-out infinite; }
+.people-step:nth-child(2) { animation-delay: -0.8s; }
+.people-step:nth-child(3) { animation-delay: -1.6s; }
+.people-step:nth-child(4) { animation-delay: -2.4s; }
+.people-step span { align-self: flex-start; color: var(--fog); font-size: 0.42rem; font-weight: 800; letter-spacing: 0.1em; }
+.people-step i { display: grid; width: 2.45rem; aspect-ratio: 1; border: 1px solid var(--coral); border-radius: 50%; place-items: center; background: var(--ivory); }
+.people-step i::before { width: 0.75rem; height: 0.75rem; border-radius: 50%; content: ""; background: var(--coral); box-shadow: 0 0.85rem 0 -0.1rem var(--sage); }
+.people-step strong { overflow-wrap: anywhere; font-size: 0.46rem; letter-spacing: 0.06em; text-align: center; }
+.people-status { position: absolute; bottom: 1rem; display: flex; align-items: center; gap: 0.45rem; color: var(--fog); font-size: 0.48rem; }
+.people-status i { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: #668854; }
+
 .visual-digital { display: grid; place-items: center; }
 .content-core { position: relative; z-index: 3; display: grid; width: 6.5rem; aspect-ratio: 1; border-radius: 50%; place-items: center; color: #fffaf0; background: var(--night); box-shadow: 0 0 0 1.2rem rgba(23,38,44,0.06); animation: content-core 3s ease-in-out infinite; }
 .content-core strong { font-family: "Newsreader", Georgia, serif; font-size: 2.1rem; font-weight: 400; line-height: 1; }.content-core span { position: absolute; bottom: 1.15rem; font-size: 0.42rem; letter-spacing: 0.1em; }
@@ -842,6 +856,7 @@ h1 { font-size: clamp(4.7rem, 7.8vw, 8.7rem); line-height: 0.82; }
 @keyframes response-ring { 50% { box-shadow: 0 0 0 1.35rem rgba(230,120,97,0.04); } }
 @keyframes chat-in { from { opacity: 0; transform: translateY(0.5rem); } }
 @keyframes typing { 50% { opacity: 0.25; transform: translateY(-0.1rem); } }
+@keyframes people-step { 50% { border-color: rgba(230,120,97,0.55); transform: translateY(-0.3rem); } }
 @keyframes content-core { 50% { transform: scale(1.05); } }
 @keyframes content-spin { to { transform: rotate(360deg); } }
 @keyframes content-counterspin { to { transform: rotate(-360deg); } }
@@ -881,7 +896,7 @@ h1 { font-size: clamp(4.7rem, 7.8vw, 8.7rem); line-height: 0.82; }
   .order-board { height: 29rem; }
   .board-head { padding-inline: 0.7rem; }
   .board-head span:last-child { font-size: 0; }
-  .board-head span:last-child::after { content: "07 MOD"; font-size: 0.51rem; }
+  .board-head span:last-child::after { content: "08 SERV"; font-size: 0.51rem; }
   .board-feed span:nth-child(3) { display: none; }
   .service-visual { min-height: 17rem; }
   .process-node { width: 4.2rem; }
@@ -893,6 +908,10 @@ h1 { font-size: clamp(4.7rem, 7.8vw, 8.7rem); line-height: 0.82; }
   .invoice-card { width: 42%; }
   .response-ring { left: 4%; width: 6.7rem; }
   .chat-stack { right: 3%; width: 58%; }
+  .people-route { width: 100%; gap: 0.35rem; }
+  .people-step { min-height: 6.6rem; padding: 0.5rem 0.3rem; }
+  .people-step i { width: 2rem; }
+  .people-step strong { font-size: 0.39rem; }
   .content-orbit { width: 68%; }
   .content-node { width: 4.3rem; }
   .event-date { left: 4%; width: 6.3rem; }
