@@ -22,7 +22,7 @@
     <link rel="preload" href="assets/fonts/manrope-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/fonts/newsreader-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/images/leyre-portrait-960.webp" as="image" type="image/webp" imagesrcset="assets/images/leyre-portrait-640.webp 640w, assets/images/leyre-portrait-960.webp 960w, assets/images/leyre-portrait-1200.webp 1003w" imagesizes="(max-width: 840px) 82vw, 40vw" fetchpriority="high" />
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260806-9" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260806-10" />
     <script>document.documentElement.classList.add("js");</script>
     <script src="assets/vendor/three.min.js" defer></script>
     <script src="assets/js/main.js?v=20260806-9" defer></script>
@@ -45,6 +45,8 @@
       </button>
 
       <nav class="site-nav" id="site-nav" aria-label="Navegación principal" data-menu>
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre-leyre">Quién soy</a>
         <a href="#sistema">Sistema</a>
         <a href="#servicios">Servicios</a>
         <a href="#experiencia">Experiencia</a>
@@ -108,10 +110,36 @@
         </div>
       </div>
 
+      <section class="human section-pad" id="sobre-leyre" aria-labelledby="human-title">
+        <div class="section-shell human-grid">
+          <div class="portrait-system reveal">
+            <div class="portrait-frame">
+              <picture>
+                <source type="image/webp" srcset="assets/images/leyre-portrait-640.webp 640w, assets/images/leyre-portrait-960.webp 960w, assets/images/leyre-portrait-1200.webp 1003w" sizes="(max-width: 760px) 90vw, 42vw" />
+                <img src="assets/images/leyre-portrait-fallback.jpg" width="1003" height="1568" loading="lazy" decoding="async" alt="Retrato editorial de Leyre Alcalde" />
+              </picture>
+              <div class="portrait-scan" aria-hidden="true"></div>
+              <div class="portrait-data" aria-hidden="true"><span>LA / 001</span><span>MADRID</span></div>
+            </div>
+            <p>RESPONSABILIDAD · DEDICACIÓN · COMPROMISO · CONSTANCIA · COLABORACIÓN · BUEN TRATO</p>
+          </div>
+
+          <div class="human-copy reveal">
+            <p class="section-kicker">01 / ¿QUIÉN SOY?</p>
+            <h2 id="human-title">Precisión,<br /><em>con humanidad.</em></h2>
+            <p class="large-copy">¿Necesitas recuperar horas en tu semana para centrarte en hacer crecer tu negocio y, además, tener la tranquilidad de que tus procesos están bajo control?</p>
+            <p>Te ayudo en la gestión, ejecución y seguimiento de tus procesos de negocio, asegurando un adecuado control interno, gestión de riesgos y cumplimiento de cada tarea con las mejores prácticas organizativas. Ofrezco servicios de asistencia virtual administrativa, financiera y de una amplia variedad de procesos de negocio a empresas, profesionales y emprendedores que quieren ganar tiempo y orden delegando sus tareas. Combino más de 10 años de experiencia como auditora interna con una base sólida en control interno, gestión de riesgos de procesos de negocio y contabilidad.</p>
+            <p>Tras más de una década en auditoría, he reorientado mi actividad profesional con el objetivo de poder conciliar familia y trabajo en remoto. Cuento además con una gran capacidad de aprendizaje y adaptación a cualquier entorno laboral y al uso de herramientas internas.</p>
+            <p>Destaco por mi responsabilidad, dedicación, compromiso, constancia, colaboración y buen trato, tanto con clientes como con compañeros de trabajo.</p>
+            <div class="tool-stack" aria-label="Cualidades profesionales"><span>Responsabilidad</span><span>Dedicación</span><span>Compromiso</span><span>Constancia</span><span>Colaboración</span><span>Buen trato</span></div>
+          </div>
+        </div>
+      </section>
+
       <section class="system section-pad" id="sistema" aria-labelledby="system-title" data-system-section>
         <div class="section-shell system-grid">
           <div class="system-copy reveal">
-            <p class="section-kicker">01 / EL SISTEMA</p>
+            <p class="section-kicker">02 / EL SISTEMA</p>
             <h2 id="system-title">Menos ruido.<br /><em>Más avance.</em></h2>
             <p class="system-lede">Delegar bien no consiste en mover tareas de una bandeja a otra. Consiste en construir una forma de trabajar que te dé visibilidad, continuidad y calma.</p>
             <div class="system-status" aria-label="Estado del sistema">
@@ -140,7 +168,7 @@
       <section class="services section-pad" id="servicios" aria-labelledby="services-title">
         <div class="section-shell">
           <header class="section-heading reveal">
-            <div><p class="section-kicker">02 / SERVICIOS</p><h2 id="services-title">Ocho servicios.<br /><em>Un solo objetivo.</em></h2></div>
+            <div><p class="section-kicker">03 / SERVICIOS</p><h2 id="services-title">Ocho servicios.<br /><em>Un solo objetivo.</em></h2></div>
             <p>Libertad para centrarte en el trabajo que solo tú puedes hacer, con la seguridad de que el resto sigue avanzando.</p>
           </header>
 
@@ -180,7 +208,7 @@
       <section class="experience section-pad" id="experiencia" aria-labelledby="experience-title">
         <div class="section-shell">
           <header class="section-heading reveal">
-            <div><p class="section-kicker">03 / EXPERIENCIA</p><h2 id="experience-title">El rigor no se improvisa.</h2></div>
+            <div><p class="section-kicker">04 / EXPERIENCIA</p><h2 id="experience-title">El rigor no se improvisa.</h2></div>
             <p>Más de 10 años de experiencia auditando procesos de negocio, control interno y gestión de riesgos.</p>
           </header>
 
@@ -255,30 +283,6 @@
                 <div class="timeline-content"><p>Universidad del País Vasco · Bilbao</p><h3>Licenciatura en Administración y Dirección de Empresas</h3><p class="education-note">Facultad de Ciencias Económicas y Empresariales. Especialidad Contabilidad.</p></div>
               </article>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="human section-pad" id="sobre-leyre" aria-labelledby="human-title">
-        <div class="section-shell human-grid">
-          <div class="portrait-system reveal">
-            <div class="portrait-frame">
-              <picture>
-                <source type="image/webp" srcset="assets/images/leyre-portrait-640.webp 640w, assets/images/leyre-portrait-960.webp 960w, assets/images/leyre-portrait-1200.webp 1003w" sizes="(max-width: 760px) 90vw, 42vw" />
-                <img src="assets/images/leyre-portrait-fallback.jpg" width="1003" height="1568" loading="lazy" decoding="async" alt="Retrato editorial de Leyre Alcalde" />
-              </picture>
-              <div class="portrait-scan" aria-hidden="true"></div>
-              <div class="portrait-data" aria-hidden="true"><span>LA / 001</span><span>MADRID</span></div>
-            </div>
-            <p>RESPONSABILIDAD · COMPROMISO · CONSTANCIA · COLABORACIÓN · BUEN TRATO</p>
-          </div>
-
-          <div class="human-copy reveal">
-            <p class="section-kicker">04 / EL FACTOR HUMANO</p>
-            <h2 id="human-title">Precisión,<br /><em>con humanidad.</em></h2>
-            <p class="large-copy">Soy Leyre. Después de más de una década en auditoría interna, pongo mi capacidad de organización y mi atención al detalle al servicio de empresas y profesionales que necesitan delegar bien.</p>
-            <p>Trabajo con responsabilidad, comunicación clara y una mirada práctica. Mi objetivo no es estar “detrás” de tu negocio, sino ayudarte a construir una operativa en la que puedas confiar.</p>
-            <div class="tool-stack" aria-label="Herramientas de trabajo"><span>Microsoft 365</span><span>Google Workspace</span><span>Trello</span><span>Canva</span><span>Calendly</span><span>Copilot</span><span>Claude</span></div>
           </div>
         </div>
       </section>
