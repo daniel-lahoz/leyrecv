@@ -32,7 +32,7 @@ const visualCopy = {
     customer: "Tiempo de respuesta", resolved: "Consulta resuelta", satisfaction: "Satisfacción", question: "¿Podemos cambiar la fecha?", answer: "Claro, ya está actualizado",
     digital: ["POST", "EMAIL", "WEB"], scheduled: "Contenido programado", days: "DÍAS",
     events: "Agenda coordinada", guests: "6 asistentes", times: ["09:30", "12:00", "17:00"],
-    tools: ["M365", "AI", "AUTO"], connected: "Flujo conectado"
+    tools: ["M365", "AI", "CLAUDE", "AGENTS", "ChatGPT", "SKILL"], connected: "Flujo conectado"
   },
   en: {
     process: ["INPUT", "CONTROL", "IMPROVE"], checks: ["Risk measured", "Control active"],
@@ -41,7 +41,7 @@ const visualCopy = {
     customer: "Response time", resolved: "Enquiry resolved", satisfaction: "Satisfaction", question: "Could we change the date?", answer: "Of course, it is updated",
     digital: ["POST", "EMAIL", "WEB"], scheduled: "Content scheduled", days: "DAYS",
     events: "Calendar aligned", guests: "6 attendees", times: ["09:30", "12:00", "17:00"],
-    tools: ["M365", "AI", "AUTO"], connected: "Connected workflow"
+    tools: ["M365", "AI", "CLAUDE", "AGENTS", "ChatGPT", "SKILL"], connected: "Connected workflow"
   }
 };
 
@@ -55,7 +55,7 @@ function getServiceVisual(index) {
     `<div class="visual-stage visual-customer"><div class="response-ring"><strong>08</strong><span>MIN</span><small>${copy.customer}</small></div><div class="chat-stack"><p class="chat-in">${copy.question}</p><p class="chat-out">${copy.answer} <i>✓✓</i></p><span class="typing"><i></i><i></i><i></i></span></div><div class="customer-score"><span>${copy.satisfaction}</span><strong>98%</strong><small>● ${copy.resolved}</small></div></div>`,
     `<div class="visual-stage visual-digital"><div class="content-core"><strong>07</strong><span>${copy.days}</span></div><div class="content-orbit">${copy.digital.map((item, itemIndex) => `<div class="content-node content-node-${itemIndex + 1}"><i></i><strong>${item}</strong><small>0${itemIndex + 1}</small></div>`).join("")}</div><div class="content-status"><i></i>${copy.scheduled}</div></div>`,
     `<div class="visual-stage visual-events"><div class="event-date"><span>JUL</span><strong>18</strong><small>${copy.guests}</small></div><div class="event-track"><i class="event-progress"></i>${copy.times.map((time, itemIndex) => `<div class="event-stop stop-${itemIndex + 1}"><span>${time}</span><b></b></div>`).join("")}</div><div class="attendees"><i></i><i></i><i></i><i></i><span>+2</span></div><div class="event-status">✓ ${copy.events}</div></div>`,
-    `<div class="visual-stage visual-tools"><div class="tool-network"><span class="network-line line-a"></span><span class="network-line line-b"></span><span class="network-line line-c"></span><div class="tool-hub"><i></i><strong>FLOW</strong></div>${copy.tools.map((item, itemIndex) => `<div class="tool-node tool-node-${itemIndex + 1}"><span>${item}</span></div>`).join("")}</div><div class="automation-track"><i></i><span>INPUT</span><b>${copy.connected}</b><span>DONE</span></div></div>`
+    `<div class="visual-stage visual-tools"><div class="tool-network"><span class="network-line line-a"></span><span class="network-line line-b"></span><span class="network-line line-c"></span><span class="network-line line-d"></span><span class="network-line line-e"></span><span class="network-line line-f"></span><div class="tool-hub"><i></i><strong>FLOW</strong></div>${copy.tools.map((item, itemIndex) => `<div class="tool-node tool-node-${itemIndex + 1}"><span>${item}</span></div>`).join("")}</div><div class="automation-track"><i></i><span>INPUT</span><b>${copy.connected}</b><span>DONE</span></div></div>`
   ];
   return `${visuals[index]}${coordinate}`;
 }
@@ -204,38 +204,47 @@ function initServices() {
   });
 }
 
-function initEmail() {
-  const emailCodes = [104, 111, 108, 97, 64, 108, 101, 121, 114, 101, 97, 108, 99, 97, 108, 100, 101, 46, 99, 111, 109];
-  const decodeEmail = () => String.fromCharCode(...emailCodes);
-  const button = document.querySelector("[data-copy-email]");
-  const toast = document.querySelector("[data-toast]");
-  const label = document.querySelector("[data-copy-label]");
-  let toastTimer;
-  if (!button) return;
+function initFlowCards() {
+  const cards = [...document.querySelectorAll("[data-flow-card]")];
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const shouldExpand = card.getAttribute("aria-expanded") !== "true";
+      cards.forEach((item) => item.setAttribute("aria-expanded", "false"));
+      card.setAttribute("aria-expanded", String(shouldExpand));
+    });
+  });
+}
 
-  button.addEventListener("click", async () => {
-    const email = decodeEmail();
-    try {
-      await navigator.clipboard.writeText(email);
-    } catch {
-      const field = document.createElement("textarea");
-      field.value = email;
-      field.setAttribute("readonly", "");
-      field.style.position = "fixed";
-      field.style.opacity = "0";
-      document.body.appendChild(field);
-      field.select();
-      document.execCommand("copy");
-      field.remove();
-    }
-    const original = language === "en" ? "Copy email" : "Copiar email";
-    label.textContent = language === "en" ? "Email copied" : "Correo copiado";
-    toast?.classList.add("is-visible");
-    window.clearTimeout(toastTimer);
-    toastTimer = window.setTimeout(() => {
-      label.textContent = original;
-      toast?.classList.remove("is-visible");
-    }, 2200);
+function initVectorEmail() {
+  const emailCodes = [104, 111, 108, 97, 64, 108, 101, 121, 114, 101, 97, 108, 99, 97, 108, 100, 101, 46, 99, 111, 109];
+  const glyphs = {
+    a: { width: 7, path: "M6 4V10M6 5.2Q5 4 3.5 4Q1 4 1 7Q1 10 3.5 10Q5 10 6 8.8" },
+    c: { width: 7, path: "M6 5Q5 4 3.5 4Q1 4 1 7Q1 10 3.5 10Q5 10 6 9" },
+    d: { width: 7, path: "M6 1V10M6 5Q5 4 3.5 4Q1 4 1 7Q1 10 3.5 10Q5 10 6 9" },
+    e: { width: 7, path: "M1 7H6Q6 4 3.5 4Q1 4 1 7Q1 10 3.7 10Q5.2 10 6 9" },
+    h: { width: 7, path: "M1 1V10M1 6Q2.5 4 4.5 4Q6 4 6 6V10" },
+    l: { width: 4, path: "M1.5 1V8.5Q1.5 10 3 10" },
+    m: { width: 10, path: "M1 4V10M1 6Q2 4 3.5 4Q5 4 5 6V10M5 6Q6 4 7.5 4Q9 4 9 6V10" },
+    o: { width: 7, path: "M3.5 4Q1 4 1 7Q1 10 3.5 10Q6 10 6 7Q6 4 3.5 4Z" },
+    r: { width: 6, path: "M1 4V10M1 6Q2.5 4 5 4" },
+    y: { width: 7, path: "M1 4L3.5 10M6 4L3.5 10L2 13" },
+    "@": { width: 12, path: "M8.5 9Q7.5 10 5.5 10Q2 10 2 6.5Q2 2.5 6 2.5Q10 2.5 10 6.5V8.5Q10 10 8.5 10Q7 10 7 8V5M7 5Q6 4 5 5Q4 6 4 7.5Q4 9 5.5 9Q7 9 7 7.5" },
+    ".": { width: 3, path: "M1.5 9.5L1.5 10" }
+  };
+  const namespace = "http://www.w3.org/2000/svg";
+
+  document.querySelectorAll("[data-vector-text='email']").forEach((svg) => {
+    let offset = 0;
+    [...String.fromCharCode(...emailCodes)].forEach((character) => {
+      const glyph = glyphs[character];
+      if (!glyph) return;
+      const path = document.createElementNS(namespace, "path");
+      path.setAttribute("d", glyph.path);
+      path.setAttribute("transform", `translate(${offset} 0)`);
+      svg.appendChild(path);
+      offset += glyph.width + 1;
+    });
+    svg.setAttribute("viewBox", `0 0 ${Math.max(offset - 1, 1)} 14`);
   });
 }
 
@@ -425,7 +434,8 @@ function initThreeBursts() {
 
 initInterface();
 initServices();
-initEmail();
+initFlowCards();
+initVectorEmail();
 initPointerEffects();
 initPortraitParallax();
 initThreeBursts();

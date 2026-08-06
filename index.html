@@ -22,10 +22,10 @@
     <link rel="preload" href="assets/fonts/manrope-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/fonts/newsreader-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/images/leyre-portrait-960.webp" as="image" type="image/webp" imagesrcset="assets/images/leyre-portrait-640.webp 640w, assets/images/leyre-portrait-960.webp 960w, assets/images/leyre-portrait-1200.webp 1003w" imagesizes="(max-width: 840px) 82vw, 40vw" fetchpriority="high" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260806-6" />
     <script>document.documentElement.classList.add("js");</script>
     <script src="assets/vendor/three.min.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/main.js?v=20260806-6" defer></script>
     <title>Leyre Alcalde — Asistente virtual · Control in Motion</title>
   </head>
   <body data-language="es">
@@ -36,7 +36,7 @@
 
     <header class="site-header" data-header>
       <a class="brand" href="#inicio" aria-label="Leyre Alcalde, inicio">
-        <span class="brand-mark" aria-hidden="true"><i></i><i></i></span>
+        <span class="brand-mark" aria-hidden="true">LA</span>
         <span><strong>Leyre Alcalde</strong><small>Virtual operations</small></span>
       </a>
 
@@ -124,13 +124,13 @@
             <div class="board-head"><span>SEMANA / EN CONTROL</span><span>MODO DEMO · 07 MÓDULOS</span></div>
             <div class="board-dashboard">
               <div class="board-score"><div class="score-ring"><strong>92</strong><span>%</span></div><div><small>Flujo operativo</small><strong>Todo avanza</strong><p>Visibilidad de tareas, tiempos y próximos pasos.</p></div></div>
-              <div class="board-kpis"><div><strong>12,5h</strong><span>Tiempo liberado</span></div><div><strong>18</strong><span>Tareas resueltas</span></div><div><strong>0</strong><span>Bloqueos</span></div></div>
+              <div class="board-kpis"><div><strong>9h</strong><span>Tiempo liberado</span></div><div><strong>18</strong><span>Tareas resueltas</span></div><div><strong>0</strong><span>Bloqueos</span></div></div>
             </div>
-            <div class="board-flow" aria-hidden="true">
+            <div class="board-flow" role="group" aria-label="Detalles del flujo semanal">
               <div class="flow-line"><i></i></div>
-              <article class="flow-card"><span>01 · ENTRADA</span><strong>Agenda</strong><small>09:30 · Coordinada</small></article>
-              <article class="flow-card"><span>02 · EN CURSO</span><strong>Facturas</strong><small>12 docs · Revisando</small></article>
-              <article class="flow-card"><span>03 · LISTO</span><strong>Clientes</strong><small>6 consultas · Atendidas</small></article>
+              <button class="flow-card" type="button" aria-expanded="false" aria-controls="flow-detail-agenda" data-flow-card><span>01 · ENTRADA</span><i class="flow-toggle" aria-hidden="true">+</i><span class="flow-detail" id="flow-detail-agenda">Citas, recordatorios y prioridades reunidos para que cada día empiece claro.</span><strong>Agenda</strong><small>09:30 · Coordinada</small></button>
+              <button class="flow-card" type="button" aria-expanded="false" aria-controls="flow-detail-facturas" data-flow-card><span>02 · EN CURSO</span><i class="flow-toggle" aria-hidden="true">+</i><span class="flow-detail" id="flow-detail-facturas">Documentos revisados, vencimientos controlados y pagos listos para seguimiento.</span><strong>Facturas</strong><small>12 docs · Revisando</small></button>
+              <button class="flow-card" type="button" aria-expanded="false" aria-controls="flow-detail-clientes" data-flow-card><span>03 · LISTO</span><i class="flow-toggle" aria-hidden="true">+</i><span class="flow-detail" id="flow-detail-clientes">Consultas ordenadas, respuestas coordinadas y cada conversación con su próximo paso.</span><strong>Clientes</strong><small>6 consultas · Atendidas</small></button>
             </div>
             <div class="board-feed"><span><i></i>Cobro confirmado</span><span><i></i>Reunión reprogramada</span><span><i></i>Informe enviado</span></div>
           </div>
@@ -234,8 +234,10 @@
           <h2 id="contact-title">¿Ponemos tu negocio<br /><em>en movimiento?</em></h2>
           <p>Cuéntame qué está ocupando demasiado tiempo. Podemos empezar justo ahí.</p>
           <div class="contact-actions">
-            <button class="button button-signal button-large magnetic" type="button" data-copy-email><span data-copy-label>Copiar email</span><i aria-hidden="true">↗</i></button>
-            <span class="text-link text-static">leyrealcalde.com · próximamente</span>
+            <div class="vector-contact">
+              <span class="contact-label">Correo</span>
+              <svg class="vector-text" data-vector-text="email" viewBox="0 0 210 13" role="img" aria-label="Dirección de correo representada gráficamente"></svg>
+            </div>
           </div>
           <div class="contact-meta"><span>Madrid · España</span><span>Disponible para colaboraciones remotas</span><span>ES / EN</span></div>
         </div>
@@ -244,12 +246,11 @@
 
     <footer class="site-footer">
       <div class="section-shell">
-        <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span><span><strong>Leyre Alcalde</strong><small>Virtual operations</small></span></a>
+        <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true">LA</span><span><strong>Leyre Alcalde</strong><small>Virtual operations</small></span></a>
         <p>© <span data-current-year>2026</span> · Diseño en movimiento, trabajo bajo control.</p>
         <a href="#inicio">Volver arriba ↑</a>
       </div>
     </footer>
 
-    <div class="toast" role="status" aria-live="polite" data-toast>Correo copiado</div>
   </body>
 </html>
