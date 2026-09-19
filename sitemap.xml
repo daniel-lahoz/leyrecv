@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://daniel-lahoz.github.io/leyrecv/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <xhtml:link rel="alternate" hreflang="es" href="https://daniel-lahoz.github.io/leyrecv/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://daniel-lahoz.github.io/leyrecv/en/" />
+    <loc>https://www.leyrealcalde.com/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.leyrealcalde.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.leyrealcalde.com/en/" />
   </url>
   <url>
-    <loc>https://daniel-lahoz.github.io/leyrecv/en/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <xhtml:link rel="alternate" hreflang="es" href="https://daniel-lahoz.github.io/leyrecv/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://daniel-lahoz.github.io/leyrecv/en/" />
+    <loc>https://www.leyrealcalde.com/en/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.leyrealcalde.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.leyrealcalde.com/en/" />
   </url>
 </urlset>
