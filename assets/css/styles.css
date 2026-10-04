@@ -232,7 +232,7 @@ h2 em { color: var(--coral); font-weight: inherit; }
 .service-tab:hover { color: var(--ivory); padding-left: 1.7rem; }
 .service-tab.is-active { color: var(--night); background: var(--coral); }
 .service-tab.is-active span { color: rgba(7,11,18,0.58); }
-.service-panel { display: grid; min-height: 32.2rem; grid-template-rows: 1fr auto; outline: none; }
+.service-panel { display: grid; min-height: 0; grid-template-rows: auto 17rem; outline: none; }
 .service-panel[hidden] { display: none; }
 .service-visual { position: relative; display: grid; min-height: 18rem; place-items: center; overflow: hidden; background: radial-gradient(circle, rgba(255,104,77,0.11), transparent 34%), linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: auto, 3rem 3rem, 3rem 3rem; }
 .service-visual::before, .service-visual::after { position: absolute; top: 50%; left: 50%; border: 1px solid var(--line); border-radius: 50%; content: ""; transform: translate(-50%,-50%); }
@@ -245,7 +245,7 @@ h2 em { color: var(--coral); font-weight: inherit; }
 .mini-core b { transform: translate(-50%,-50%) rotate(-28deg); }
 .mini-coordinate { position: absolute; right: 1.2rem; bottom: 1rem; color: var(--fog); font-size: 0.5rem; letter-spacing: 0.13em; }
 .mini-coordinate i { color: var(--coral); font-style: normal; }
-.service-panel-copy { padding: 2rem 2.3rem 2.3rem; border-top: 1px solid var(--line); }
+.service-panel-copy { padding: 2rem 2.3rem 2.3rem; border-bottom: 1px solid var(--line); }
 .service-panel h3 { margin-bottom: 1rem; font-family: "Newsreader", Georgia, serif; font-size: clamp(2.2rem, 4vw, 4.2rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.04em; }
 .service-panel ul { display: block; padding-left: 1.15rem; margin: 1.4rem 0 0; list-style: disc; }
 .service-panel li { padding-left: 0.35rem; color: var(--fog); font-size: 1rem; line-height: 1.65; }
@@ -614,11 +614,11 @@ h1 { font-size: clamp(4.7rem, 7.8vw, 8.7rem); line-height: 0.82; }
 
 
 /* Accounting, finance, controls and audit scenes --------------------------- */
-.service-visual { min-height: 20rem; transition: opacity 180ms ease, transform 260ms var(--ease); }
+.service-visual { min-height: 17rem; transition: opacity 180ms ease, transform 260ms var(--ease); }
 .service-visual::before, .service-visual::after { content: none; }
 .service-panel.is-switching .service-visual { opacity: 0; transform: scale(0.985); }
 .visual-stage { position: absolute; inset: 0; display: grid; overflow: hidden; place-items: center; }
-.contribution-scene { position: relative; width: min(calc(100% - 2.5rem), 29rem); height: 16rem; color: var(--night); }
+.contribution-scene { position: relative; width: min(calc(100% - 2.5rem), 29rem); height: 16rem; color: var(--night); transform: scale(0.85); }
 .contribution-scene span, .contribution-scene small { font-size: 0.57rem; line-height: 1.4; }
 .contribution-scene .scene-heading { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
 .scene-heading span { font-weight: 750; letter-spacing: 0.07em; text-transform: uppercase; }
