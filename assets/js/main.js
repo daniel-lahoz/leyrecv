@@ -5,31 +5,28 @@ const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
 const visualCopy = {
   es: {
-    process: ["ENTRADA", "CONTROL", "MEJORA"], checks: ["Riesgo medido", "Control activo"],
-    admin: ["L", "M", "X", "J", "V"], inbox: "Bandeja al día", meeting: "Reunión · 11:30",
-    finance: "Flujo mensual", invoice: "Factura 024", paid: "Cobro confirmado",
-    customer: "Atención bilingüe", resolved: "Consulta resuelta", satisfaction: "Satisfacción", question: "¿Podemos cambiar la fecha?", answer: "Claro, ya está actualizado",
-    tools: ["M365", "WORKSPACE", "TRELLO", "HOLDED", "CLAUDE", "COPILOT"], connected: "Flujo conectado"
+    accounting: "Registro contable", invoice: "Factura", debit: "Debe", credit: "Haber", entries: ["Registro", "Banco", "Ajuste"], reconciled: "Conciliación", close: "Cierre",
+    treasury: "Tesorería", collections: "Cobros", payments: "Pagos", budget: "Seguimiento presupuestario", planned: "Presupuesto", actual: "Ejecución", reporting: "Reporting para dirección",
+    procedure: "Procedimiento", risk: "Riesgos", impact: "Impacto", probability: "Probabilidad", control: "Control", improvement: "Mejora continua",
+    audit: "Auditoría", evidence: "Documentación", request: "Requerimientos", followup: "Seguimiento", auditSteps: ["Preparar", "Responder", "Seguir"]
   },
   en: {
-    process: ["INPUT", "CONTROL", "IMPROVE"], checks: ["Risk measured", "Control active"],
-    admin: ["M", "T", "W", "T", "F"], inbox: "Inbox cleared", meeting: "Meeting · 11:30",
-    finance: "Monthly flow", invoice: "Invoice 024", paid: "Payment confirmed",
-    customer: "Bilingual support", resolved: "Enquiry resolved", satisfaction: "Satisfaction", question: "Could we change the date?", answer: "Of course, it is updated",
-    tools: ["M365", "WORKSPACE", "TRELLO", "HOLDED", "CLAUDE", "COPILOT"], connected: "Connected workflow"
+    accounting: "Accounting records", invoice: "Invoice", debit: "Debit", credit: "Credit", entries: ["Entry", "Bank", "Adjustment"], reconciled: "Reconciliation", close: "Close",
+    treasury: "Treasury", collections: "Collections", payments: "Payments", budget: "Budget monitoring", planned: "Budget", actual: "Actual", reporting: "Management reporting",
+    procedure: "Procedure", risk: "Risks", impact: "Impact", probability: "Likelihood", control: "Control", improvement: "Continuous improvement",
+    audit: "Audit", evidence: "Documentation", request: "Requests", followup: "Follow-up", auditSteps: ["Prepare", "Respond", "Follow up"]
   }
 };
 
 function getServiceVisual(index) {
   const copy = visualCopy[language];
-  const coordinateLabel = language === "en" ? "SERVICE" : "SERVICIO";
+  const coordinateLabel = language === "en" ? "AREA" : "ÁREA";
   const coordinate = `<span class="mini-coordinate">${coordinateLabel} / <i>${String(index + 1).padStart(2, "0")}</i></span>`;
   const visuals = [
-    `<div class="visual-stage visual-process"><div class="process-route"><i class="route-pulse"></i>${copy.process.map((item, itemIndex) => `<div class="process-node node-${itemIndex + 1}"><span>0${itemIndex + 1}</span><strong>${item}</strong></div>`).join("")}</div><div class="process-checks"><span>✓ ${copy.checks[0]}</span><span>✓ ${copy.checks[1]}</span></div></div>`,
-    `<div class="visual-stage visual-finance"><div class="finance-head"><span>${copy.finance}</span><strong>+18%</strong></div><div class="finance-chart">${[42, 68, 54, 84, 73, 96].map((height, itemIndex) => `<i style="--bar:${height}%;--delay:${itemIndex * 80}ms"></i>`).join("")}<span class="chart-line"></span></div><div class="invoice-card"><span>${copy.invoice}</span><strong>1.240 €</strong><small>● ${copy.paid}</small></div></div>`,
-    `<div class="visual-stage visual-admin"><div class="admin-calendar"><div class="calendar-top"><span>JUL / 26</span><i></i></div><div class="calendar-days">${copy.admin.map((day, dayIndex) => `<span class="${dayIndex === 2 ? "is-today" : ""}">${day}<b>${14 + dayIndex}</b></span>`).join("")}</div></div><div class="admin-message message-a"><i></i><span>${copy.inbox}</span><b>04</b></div><div class="admin-message message-b"><i></i><span>${copy.meeting}</span><b>✓</b></div></div>`,
-    `<div class="visual-stage visual-customer"><div class="response-ring response-ring-bilingual"><strong>ES·EN</strong><small>${copy.customer}</small></div><div class="chat-stack"><p class="chat-in">${copy.question}</p><p class="chat-out">${copy.answer} <i>✓✓</i></p><span class="typing"><i></i><i></i><i></i></span></div><div class="customer-score"><span>${copy.satisfaction}</span><strong>98%</strong><small>● ${copy.resolved}</small></div></div>`,
-    `<div class="visual-stage visual-tools"><div class="tool-network"><span class="network-line line-a"></span><span class="network-line line-b"></span><span class="network-line line-c"></span><span class="network-line line-d"></span><span class="network-line line-e"></span><span class="network-line line-f"></span><div class="tool-hub"><i></i><strong>FLOW</strong></div>${copy.tools.map((item, itemIndex) => `<div class="tool-node tool-node-${itemIndex + 1}"><span>${item}</span></div>`).join("")}</div><div class="automation-track"><i></i><span>INPUT</span><b>${copy.connected}</b><span>DONE</span></div></div>`,
+    `<div class="visual-stage contribution-accounting"><div class="contribution-scene"><div class="accounting-document contribution-motion"><span>${copy.invoice}</span><b>01</b><i></i><i></i><i></i></div><div class="accounting-book"><div class="scene-heading"><span>${copy.accounting}</span><i></i></div><div class="ledger-head"><span></span><span>${copy.debit}</span><span>${copy.credit}</span></div>${copy.entries.map((entry, i) => `<div class="ledger-row contribution-motion" style="--step:${i}"><span>${entry}</span><i></i><i></i><b>✓</b></div>`).join("")}<div class="ledger-scan contribution-motion"></div></div><div class="accounting-check contribution-motion"><b>✓</b><span>${copy.reconciled}</span></div><div class="closing-track"><span>${copy.close}</span><div><i class="contribution-motion"></i></div><b>✓</b></div></div></div>`,
+    `<div class="visual-stage contribution-finance"><div class="contribution-scene"><div class="cash-flow cash-in contribution-motion"><i>↘</i><span>${copy.collections}</span></div><div class="cash-flow cash-out contribution-motion"><span>${copy.payments}</span><i>↗</i></div><div class="treasury-hub"><i class="treasury-orbit contribution-motion"></i><strong>${copy.treasury}</strong></div><div class="budget-chart"><div class="scene-heading"><span>${copy.budget}</span><i></i></div><div class="budget-bars">${[[60,48],[78,70],[55,64],[86,79],[72,62],[93,85]].map((bars, i) => `<div style="--step:${i}"><i class="contribution-motion" style="--bar:${bars[0]}%"></i><b class="contribution-motion" style="--bar:${bars[1]}%"></b></div>`).join("")}</div><div class="budget-legend"><span><i></i>${copy.planned}</span><span><i></i>${copy.actual}</span></div></div><div class="report-strip"><i class="contribution-motion"></i><span>${copy.reporting}</span><b>↗</b></div></div></div>`,
+    `<div class="visual-stage contribution-risk"><div class="contribution-scene"><div class="risk-connection"><i class="contribution-motion"></i></div><div class="procedure-sheet"><div class="scene-heading"><span>${copy.procedure}</span></div>${[0,1,2].map(i => `<div class="procedure-row"><b class="contribution-motion" style="--step:${i}">✓</b><i></i></div>`).join("")}</div><div class="risk-map"><span>${copy.risk}</span><div class="risk-matrix">${Array.from({length:9},(_,i) => `<i class="risk-cell risk-cell-${i}"></i>`).join("")}<b class="risk-marker contribution-motion"></b></div><small>${copy.probability}</small><em>${copy.impact}</em></div><div class="control-seal"><div class="control-orbit contribution-motion"></div><div class="control-shield contribution-motion">✓</div><span>${copy.control}</span></div><div class="improvement-track"><span>${copy.improvement}</span><i class="contribution-motion">↻</i></div></div></div>`,
+    `<div class="visual-stage contribution-audit"><div class="contribution-scene"><div class="audit-route"><i class="contribution-motion"></i></div><div class="audit-paper paper-evidence contribution-motion"><span>${copy.evidence}</span><i></i><i></i><b>✓</b></div><div class="audit-paper paper-request contribution-motion"><span>${copy.request}</span><i></i><i></i><b>↔</b></div><div class="audit-folder"><div class="folder-back"></div><div class="folder-sheet contribution-motion"><i></i><i></i><i></i></div><div class="folder-front"><strong>${copy.audit}</strong><span>${copy.followup}</span><b>✓</b></div></div><div class="audit-checklist">${copy.auditSteps.map((step,i) => `<div><b class="contribution-motion" style="--step:${i}">✓</b><span>${step}</span></div>`).join("")}</div></div></div>`,
   ];
   return `${visuals[index]}${coordinate}`;
 }
@@ -39,7 +36,6 @@ function initInterface() {
   const menu = document.querySelector("[data-menu]");
   const menuToggle = document.querySelector("[data-menu-toggle]");
   const progress = document.querySelector("[data-page-progress]");
-  const orderBoard = document.querySelector("[data-order-board]");
   const navLinks = [...document.querySelectorAll(".site-nav a")];
   const sections = navLinks.map((link) => document.querySelector(link.hash)).filter(Boolean);
 
@@ -65,12 +61,6 @@ function initInterface() {
     const scrollRange = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
     progress?.style.setProperty("transform", `scaleX(${scrollTop / scrollRange})`);
     header?.classList.toggle("is-scrolled", scrollTop > 24);
-
-    if (orderBoard) {
-      const bounds = orderBoard.getBoundingClientRect();
-      const boardProgress = clamp((window.innerHeight * 0.86 - bounds.top) / (window.innerHeight * 0.75), 0, 1);
-      orderBoard.style.setProperty("--chaos", String(1 - boardProgress));
-    }
 
     let activeSection = null;
     sections.forEach((section) => {
@@ -102,7 +92,7 @@ function initInterface() {
     reveals.forEach((element) => observer.observe(element));
   }
 
-  const stableAnchors = new Set(["#inicio", "#sistema", "#servicios", "#experiencia", "#sobre-leyre", "#contacto"]);
+  const stableAnchors = new Set(["#inicio", "#servicios", "#experiencia", "#sobre-leyre", "#contacto"]);
   document.querySelectorAll("[data-language-link]").forEach((link) => {
     link.addEventListener("click", (event) => {
       if (link.getAttribute("aria-current") === "page") return;
@@ -123,6 +113,20 @@ function initServices() {
 
   const serviceNav = tabs[0].closest(".service-nav");
   const serviceConsole = tabs[0].closest("[data-service-console]");
+  if (serviceConsole) {
+    let inView = false;
+    const updateAnimationState = () => serviceConsole.classList.toggle("is-in-view", inView && !document.hidden);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting;
+        updateAnimationState();
+      }, { threshold: 0 }).observe(serviceConsole);
+    } else {
+      inView = true;
+      updateAnimationState();
+    }
+    document.addEventListener("visibilitychange", updateAnimationState);
+  }
   if (serviceNav && serviceConsole) {
     const mobileServices = window.matchMedia("(max-width: 840px)");
     const labels = language === "en"
@@ -225,17 +229,6 @@ function initServices() {
       if (event.key === "Home") nextIndex = 0;
       if (event.key === "End") nextIndex = tabs.length - 1;
       activate(nextIndex, true);
-    });
-  });
-}
-
-function initFlowCards() {
-  const cards = [...document.querySelectorAll("[data-flow-card]")];
-  cards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const shouldExpand = card.getAttribute("aria-expanded") !== "true";
-      cards.forEach((item) => item.setAttribute("aria-expanded", "false"));
-      card.setAttribute("aria-expanded", String(shouldExpand));
     });
   });
 }
@@ -476,7 +469,6 @@ function initThreeBursts() {
 
 initInterface();
 initServices();
-initFlowCards();
 initEmailActions();
 initPointerEffects();
 initPortraitParallax();
