@@ -39,7 +39,6 @@ function initInterface() {
   const menu = document.querySelector("[data-menu]");
   const menuToggle = document.querySelector("[data-menu-toggle]");
   const progress = document.querySelector("[data-page-progress]");
-  const orderBoard = document.querySelector("[data-order-board]");
   const navLinks = [...document.querySelectorAll(".site-nav a")];
   const sections = navLinks.map((link) => document.querySelector(link.hash)).filter(Boolean);
 
@@ -65,12 +64,6 @@ function initInterface() {
     const scrollRange = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
     progress?.style.setProperty("transform", `scaleX(${scrollTop / scrollRange})`);
     header?.classList.toggle("is-scrolled", scrollTop > 24);
-
-    if (orderBoard) {
-      const bounds = orderBoard.getBoundingClientRect();
-      const boardProgress = clamp((window.innerHeight * 0.86 - bounds.top) / (window.innerHeight * 0.75), 0, 1);
-      orderBoard.style.setProperty("--chaos", String(1 - boardProgress));
-    }
 
     let activeSection = null;
     sections.forEach((section) => {
@@ -102,7 +95,7 @@ function initInterface() {
     reveals.forEach((element) => observer.observe(element));
   }
 
-  const stableAnchors = new Set(["#inicio", "#sistema", "#servicios", "#experiencia", "#sobre-leyre", "#contacto"]);
+  const stableAnchors = new Set(["#inicio", "#servicios", "#experiencia", "#sobre-leyre", "#contacto"]);
   document.querySelectorAll("[data-language-link]").forEach((link) => {
     link.addEventListener("click", (event) => {
       if (link.getAttribute("aria-current") === "page") return;
@@ -225,17 +218,6 @@ function initServices() {
       if (event.key === "Home") nextIndex = 0;
       if (event.key === "End") nextIndex = tabs.length - 1;
       activate(nextIndex, true);
-    });
-  });
-}
-
-function initFlowCards() {
-  const cards = [...document.querySelectorAll("[data-flow-card]")];
-  cards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const shouldExpand = card.getAttribute("aria-expanded") !== "true";
-      cards.forEach((item) => item.setAttribute("aria-expanded", "false"));
-      card.setAttribute("aria-expanded", String(shouldExpand));
     });
   });
 }
@@ -476,7 +458,6 @@ function initThreeBursts() {
 
 initInterface();
 initServices();
-initFlowCards();
 initEmailActions();
 initPointerEffects();
 initPortraitParallax();
