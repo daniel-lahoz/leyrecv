@@ -5,11 +5,13 @@
     <lastmod>2026-10-04</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.leyrealcalde.com/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.leyrealcalde.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.leyrealcalde.com/" />
   </url>
   <url>
     <loc>https://www.leyrealcalde.com/en/</loc>
     <lastmod>2026-10-04</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.leyrealcalde.com/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.leyrealcalde.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.leyrealcalde.com/" />
   </url>
 </urlset>
